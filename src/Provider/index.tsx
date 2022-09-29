@@ -14,7 +14,7 @@ export function Provider({
         secondaryText: "174, 173, 205",
         cardBorder: "235, 235, 241",
         background: "255, 255, 255"
-      } as ThemeProps}>
+      }}>
         {children}
       </ThemeProvider>
     </>
@@ -22,18 +22,17 @@ export function Provider({
 }
 
 const GlobalStyle = createGlobalStyle<{ dark: boolean; }>`
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
   body {
     background-color: ${props => props.dark ? "#000" : "#fff"};
     color: ${props => props.dark ? "#fff" : "#000"};
+    font-family: 'Manrope', sans-serif;
+  }
+
+  input, textarea, button, select {
+    font-family: 'Manrope', sans-serif;
   }
 `;
 
 export type DisplayTheme = "dark" | "light";
-
-export interface ThemeProps {
-  theme: string;
-  primaryText: string;
-  secondaryText: string;
-  background: string;
-  cardBorder: string;
-}
