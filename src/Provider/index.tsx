@@ -28,10 +28,12 @@ const GlobalStyle = createGlobalStyle<{ dark: boolean; }>`
     background-color: ${props => props.dark ? "#000" : "#fff"};
     color: ${props => props.dark ? "#fff" : "#000"};
     font-family: 'Manrope', sans-serif;
+    letter-spacing: .5px;
   }
 
   input, textarea, button, select {
     font-family: 'Manrope', sans-serif;
+    letter-spacing: .5px;
   }
 `;
 
