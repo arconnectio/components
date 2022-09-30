@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export function Input({ children, fullWidth, small, status = "default", icon, ...props }: PropsWithChildren<SharedProps & InputProps & HTMLProps<HTMLInputElement>>) {
   const inputProps = useMemo<any>(() => ({ fullWidth, small, status, ...props }), [fullWidth, small, status, props]);
-  // TODO: icon
+
   return (
     <>
       {children && (
@@ -14,6 +14,11 @@ export function Input({ children, fullWidth, small, status = "default", icon, ..
       )}
       <InputWrapper fullWidth={fullWidth} small={small} status={status ?? "default"}>
         <InputElement {...inputProps} />
+        {icon && (
+          <IconWrapper fullWidth={fullWidth} small={small} status={status ?? "default"}>
+            {icon}
+          </IconWrapper>
+        )}
       </InputWrapper>
     </>
   );
@@ -42,10 +47,12 @@ const InputWrapper = styled.div<SharedProps>`
   border: 2.5px solid ${props => (props.status === "default" || !props.status) ? "rgb(" + props.theme.cardBorder + ")" : statusColors[props.status]};
   border-radius: ${props => props.small ? "15px" : "22px"};
   overflow: hidden;
+  color: rgb(${props => props.theme.cardBorder});
   transition: all .23s ease-in-out;
 
   &:focus-within {
     border-color: ${props => (props.status === "default" || !props.status) ? "rgba(" + props.theme.theme + ", .5)" : statusColors[props.status]};
+    color: rgb(${props => props.theme.theme});
   }
 `;
 
@@ -83,4 +90,13 @@ const InputElement = styled.input<SharedProps>`
   ::placeholder {
     color: rgb(${props => props.theme.cardBorder});
   }
+`;
+
+const IconWrapper = styled.div<SharedProps>`
+  position: absolute;
+  display: flex;
+  font-size: ${props => props.small ? ".9rem" : "1.2rem"};
+  top: 50%;
+  right: ${props => props.small ? side_padding / 3 * 2 : side_padding}rem;
+  transform: translateY(-50%);
 `;

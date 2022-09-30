@@ -24,6 +24,7 @@
     "web-vitals": "^2.1.0"
   },
   "devDependencies": {
+    "@iconicicons/react": "^1.5.0",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",
     "@storybook/addon-interactions": "^6.5.12",
@@ -37,9 +38,9 @@
     "@types/styled-components": "^5.1.26",
     "babel-plugin-named-exports-order": "^0.0.2",
     "prop-types": "^15.8.1",
-    "react-scripts": "5.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
     "webpack": "^5.74.0"
   },
   "browserslist": {
