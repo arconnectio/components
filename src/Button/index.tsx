@@ -11,7 +11,7 @@ export const Button = styled.button<ButtonProps>`
   font-weight: 600;
   padding: ${props => props.small ? ".9rem" : "1.2rem"} ${props => props.fullWidth ? "0" : (props.small ? "2rem" : "3.35rem")};
   width: ${props => props.fullWidth ? "100%" : "auto"};
-  border-radius: ${props => props.small ? "19px" : "25px"};
+  border-radius: ${props => props.small ? "19px" : "24px"};
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@ export const Button = styled.button<ButtonProps>`
   box-shadow: 0 0 0 0 rgba(${props => props.reversed ? props.theme.background : props.theme.theme}, ${props => props.secondary ? ".2" : 1});
 
   &:hover:not(:active):not(:disabled) {
-    box-shadow: 0 0 0 .25rem rgba(${props => props.reversed ? props.theme.background : props.theme.theme}, ${props => props.secondary ? ".2" : 1});
+    box-shadow: 0 0 0 ${props => props.small ? ".19rem" : ".25rem"} rgba(${props => props.reversed ? props.theme.background : props.theme.theme}, ${props => props.secondary ? ".2" : 1});
   }
 `;
 
