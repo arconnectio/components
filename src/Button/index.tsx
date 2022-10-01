@@ -8,10 +8,10 @@ export const Button = styled.button<ButtonProps>`
   outline: none;
   cursor: pointer;
   font-size: ${props => props.small ? ".83rem" : "1.05rem"};
-  font-weight: 500;
+  font-weight: 600;
   padding: ${props => props.small ? ".9rem" : "1.2rem"} ${props => props.fullWidth ? "0" : (props.small ? "2rem" : "3.35rem")};
   width: ${props => props.fullWidth ? "100%" : "auto"};
-  border-radius: ${props => props.small ? "19px" : "24px"};
+  border-radius: ${props => props.small ? "19px" : "25px"};
   text-align: center;
   align-items: center;
   justify-content: center;
