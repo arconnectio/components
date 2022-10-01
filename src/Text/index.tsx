@@ -19,11 +19,12 @@ export function Text({ children, title, subtitle, heading, ...props }: TextProps
   const TextElement = useMemo(() => styled[tag]`
     font-size: ${sizes[tag]};
     color: rgb(${props => tag === "p" ? props.theme.secondaryText : props.theme.primaryText});
-    font-weight: ${tag === "p" ? "600" : "700"};
+    font-weight: ${tag === "p" ? "500" : "700"};
+    margin-top: 0;
   `, [tag]);
 
   return (
-    <TextElement>
+    <TextElement {...props}>
       {children}
     </TextElement>
   );
