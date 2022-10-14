@@ -1,6 +1,6 @@
 {
   "name": "@arconnect/components",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -14,6 +14,10 @@
   "module": "dist/module/index.js",
   "jsnext:main": "dist/module/index.js",
   "types": "dist/module/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "dependencies": {
     "@iconicicons/react": "^1.5.0",
     "@types/jest": "^27.0.1",
