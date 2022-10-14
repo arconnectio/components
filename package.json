@@ -1,5 +1,5 @@
 {
-  "name": "components",
+  "name": "@arconnect/components",
   "version": "0.1.0",
   "private": false,
   "publishConfig": {
