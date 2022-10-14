@@ -1,5 +1,5 @@
 import { HTMLProps, ReactNode, useMemo } from "react";
-import { InputStatus } from "~hooks";
+import { InputStatus } from "../hooks";
 import styled from "styled-components";
 
 export function Input({ label, fullWidth, small, status = "default", icon, ...props }: SharedProps & InputProps & HTMLProps<HTMLInputElement>) {
