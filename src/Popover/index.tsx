@@ -1,10 +1,10 @@
 import { PropsWithChildren, ReactNode, useEffect, useRef, useState } from "react";
-import { Position, getPosition } from "../Tooltip/position";
+import { Position, getPosition, TooltipPosition } from "../Tooltip/position";
 import { AnimatePresence, motion } from "framer-motion";
 import { Card } from "../Card";
 import styled from "styled-components";
 
-export function Popover({ children, content, position = "top", mode = "click", ...props }: PropsWithChildren<PopoverProps>) {
+export function Popover({ children, content, position = "top", customPos, mode = "click", ...props }: PropsWithChildren<PopoverProps>) {
   const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export function Popover({ children, content, position = "top", mode = "click", .
       <AnimatePresence>
         {isOpen && (
           <PopoverElement
-            style={getPosition(position)}
+            style={customPos || getPosition(position)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -60,6 +60,7 @@ export interface PopoverProps {
   content: ReactNode;
   position?: Position;
   mode?: "click" | "hover";
+  customPos?: TooltipPosition;
 };
 
 const PopoverWrapper = styled.div`
