@@ -1,4 +1,4 @@
-import { HTMLAttributes, PropsWithChildren, useMemo } from "react"
+import { HTMLAttributes, useMemo } from "react"
 import styled from "styled-components"
 
 const sizes = {
@@ -16,19 +16,19 @@ export function Text({ children, title, subtitle, heading, ...props }: TextProps
     else return "p";
   }, [title, subtitle, heading]);
 
-  const TextElement = useMemo(() => styled[tag]`
-    font-size: ${sizes[tag]};
-    color: rgb(${props => tag === "p" ? props.theme.secondaryText : props.theme.primaryText});
-    font-weight: ${tag === "p" ? "500" : "700"};
-    margin-top: 0;
-  `, [tag]);
-
   return (
-    <TextElement {...props}>
+    <TextElement as={tag} size={tag} {...props}>
       {children}
     </TextElement>
   );
 }
+
+const TextElement = styled.p<{ size: "h1" | "h2" | "h3" | "p" }>`
+  font-size: ${props => sizes[props.size]};
+  color: rgb(${props => props.size === "p" ? props.theme.secondaryText : props.theme.primaryText});
+  font-weight: ${props => props.size === "p" ? "500" : "700"};
+  margin-top: 0;
+`;
 
 export interface TextProps {
   title?: boolean;
