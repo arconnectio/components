@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const sizes = {
   popup: {
-    normal: "34px",
-    slim: "20px"
+    normal: "20px",
+    slim: "12px"
   },
   page: {
     normal: "12vw",
