@@ -1,6 +1,6 @@
 {
   "name": "@arconnect/components",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -41,14 +41,14 @@
     "@storybook/testing-library": "^0.0.13",
     "@types/styled-components": "^5.1.26",
     "babel-plugin-named-exports-order": "^0.0.2",
-    "styled-components": "^5.3.6",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "styled-components": "^5.3.6",
     "webpack": "^5.74.0"
   },
-  "peerDependencies" : {
+  "peerDependencies": {
     "styled-components": ">= 3"
   },
   "browserslist": {
