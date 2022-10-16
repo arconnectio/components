@@ -17,7 +17,8 @@ const Template: ComponentStory<typeof Toast> = (args) => (
 const defaultArgs: ComponentProps<typeof Toast> = {
   close: () => {},
   duration: 4000,
-  displayTheme: "light"
+  displayTheme: "light",
+  addedAt: new Date().getTime()
 };
 
 export const Info = Template.bind({});
@@ -45,9 +46,3 @@ Success.args = {
   ...defaultArgs,
   type: "success"
 };
-
-export const Test = () => {
-  const { setToast } = useToasts();
-
-  return <button onClick={() => setToast({ content: "test", duration: 3000 })}>ok</button>
-}
