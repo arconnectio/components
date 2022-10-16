@@ -21,8 +21,14 @@ export function Popover({ children, content, position = "top", customPos, mode =
   function handleClicks(e: MouseEvent) {
     if (mode !== "click") return;
     if (!isOpen && wrapperRef.current?.contains(e.target as Node)) setOpen(true);
-    else if (isOpen && !popoverRef.current?.contains(e.target as Node))
+    else if (isOpen && !popoverRef.current?.contains(e.target as Node)) {
+      // prevent any events
+      e.preventDefault();
+      e.stopPropagation();
+
+      // close popover
       setOpen(false);
+    }
   }
 
   return (
