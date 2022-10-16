@@ -1,9 +1,10 @@
 import { CheckCircleIcon, CloseIcon, InformationIcon, TargetIcon } from "@iconicicons/react";
-import { PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren, useEffect, useMemo, useState } from "react";
 import { DisplayTheme } from "../Provider";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export function Toast({ children, duration, action, displayTheme, type = "info", close }: PropsWithChildren<ToastProps>) {
+export function Toast({ children, duration, action, displayTheme, type = "info", close, addedAt }: PropsWithChildren<ToastProps>) {
   const [progress, setProgress] = useState<number>(100);
 
   // update progress based on the total duration
@@ -11,11 +12,12 @@ export function Toast({ children, duration, action, displayTheme, type = "info",
     const interval = setInterval(() => {
       if (progress === 0) {
         clearInterval(interval);
-        close();
         return;
       }
+      
+      const time = new Date().getTime();
 
-      setProgress(val => val - 1);
+      setProgress(100 - (time - addedAt) / duration * 100);
     }, duration / 100);
 
     return () => clearInterval(interval);
@@ -54,10 +56,8 @@ export function Toast({ children, duration, action, displayTheme, type = "info",
 
 export interface ToastProps {
   duration: number;
-  action?: {
-    name: string;
-    task: (...args: any[]) => any
-  };
+  action?: ToastAction;
+  addedAt: number;
   displayTheme: DisplayTheme;
   type?: ToastType;
   close: (...args: any[]) => any;
@@ -65,9 +65,41 @@ export interface ToastProps {
 
 export type ToastType = "error" | "success" | "info";
 
+export interface ToastAction {
+  name: string;
+  task: (...args: any[]) => any;
+};
+
 const progressHeight = ".2rem";
 
-const ToastWrapper = styled.div<{ displayTheme: DisplayTheme }>`
+const ToastWrapper = styled(motion.div).attrs({
+  initial: {
+    opacity: 0,
+    translateY: "-100%",
+    scale: .85,
+    transition: {
+      ease: "easeInOut",
+      duration: 0.23
+    }
+  },
+  animate: {
+    opacity: 1,
+    translateY: 0,
+    scale: 1,
+    transition: {
+      ease: "easeInOut",
+      duration: 0.23
+    }
+  },
+  exit: {
+    opacity: 0,
+    scale: 0,
+    transition: {
+      ease: "easeInOut",
+      duration: 0.23
+    }
+  }
+})<{ displayTheme: DisplayTheme }>`
   position: relative;
   display: flex;
   align-items: center;
@@ -80,6 +112,7 @@ const ToastWrapper = styled.div<{ displayTheme: DisplayTheme }>`
   padding: .5rem 1.1rem calc(.5rem + ${progressHeight});
   overflow: hidden;
   border: ${props => props.displayTheme === "light" ? "none" : "2px solid rgb(" + props.theme.cardBorder + ")"};
+  transition: all .23s ease-in-out;
 `;
 
 const resultColors = {

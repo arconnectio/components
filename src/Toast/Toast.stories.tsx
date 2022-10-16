@@ -2,6 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { ComponentProps } from "react"
 
 import { Toast } from "./index";
+import { useToasts } from "./utils"
 
 export default {
   title: "Toast",
@@ -44,3 +45,9 @@ Success.args = {
   ...defaultArgs,
   type: "success"
 };
+
+export const Test = () => {
+  const { setToast } = useToasts();
+
+  return <button onClick={() => setToast({ content: "test", duration: 3000 })}>ok</button>
+}
