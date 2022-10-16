@@ -87,6 +87,7 @@ const ToastsWrapper = styled.div`
   bottom: 1rem;
   left: 1rem;
   right: 1rem;
+  z-index: 10000;
 `;
 
 export type DisplayTheme = "dark" | "light";
