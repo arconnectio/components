@@ -47,9 +47,9 @@ export function Toast({ children, duration, action, displayTheme, type = "info",
           <XIcon />
         </CloseButton>
       </Actions>
-      {progress > 0 && (
+      {/*progress > 0 && (
         <Progress type={type} progress={progress} />
-      )}
+      )*/}
     </ToastWrapper>
   );
 }
@@ -109,7 +109,8 @@ const ToastWrapper = styled(motion.div).attrs({
   font-weight: 500;
   background-color: #000;
   border-radius: 8px;
-  padding: .5rem 1.1rem calc(.5rem + ${progressHeight});
+  //padding: .5rem 1.1rem calc(.5rem + ${progressHeight});
+  padding: .5rem 1.1rem;
   overflow: hidden;
   border: ${props => props.displayTheme === "light" ? "none" : "2px solid rgb(" + props.theme.cardBorder + ")"};
   transition: all .23s ease-in-out;
