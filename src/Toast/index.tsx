@@ -1,5 +1,5 @@
+import { CheckCircleIcon, CloseIcon, InformationIcon, TargetIcon } from "@iconicicons/react";
 import { PropsWithChildren, useEffect, useState } from "react";
-import { CloseIcon } from "@iconicicons/react";
 import { DisplayTheme } from "../Provider";
 import styled from "styled-components";
 
@@ -9,8 +9,13 @@ export function Toast({ children, duration, action, displayTheme, type = "info",
   // update progress based on the total duration
   useEffect(() => {
     const interval = setInterval(() => {
+      if (progress === 0) {
+        clearInterval(interval);
+        close();
+        return;
+      }
+
       setProgress(val => val - 1);
-      clearInterval(interval);
     }, duration / 100);
 
     return () => clearInterval(interval);
@@ -18,9 +23,15 @@ export function Toast({ children, duration, action, displayTheme, type = "info",
 
   return (
     <ToastWrapper displayTheme={displayTheme}>
-      <ChildrenWrapper>
-        {children}
-      </ChildrenWrapper>
+      <ChildrenWithIcon>
+        <Icon
+          as={type === "info" ? InformationIcon : (type === "error" ? TargetIcon : CheckCircleIcon)}
+          type={type}
+        />
+        <ChildrenWrapper>
+          {children}
+        </ChildrenWrapper>
+      </ChildrenWithIcon>
       <Actions>
         {action && (
           <ActionButton onClick={async () => {
@@ -34,7 +45,9 @@ export function Toast({ children, duration, action, displayTheme, type = "info",
           <XIcon />
         </CloseButton>
       </Actions>
-      <Progress type={type} progress={progress} />
+      {progress > 0 && (
+        <Progress type={type} progress={progress} />
+      )}
     </ToastWrapper>
   );
 }
@@ -69,17 +82,35 @@ const ToastWrapper = styled.div<{ displayTheme: DisplayTheme }>`
   border: ${props => props.displayTheme === "light" ? "none" : "2px solid rgb(" + props.theme.cardBorder + ")"};
 `;
 
+const resultColors = {
+  success: "20, 209, 16",
+  error: "255, 0, 0"
+};
+
 const Progress = styled.div<{ type: ToastType; progress: number; }>`
   position: absolute;
   bottom: 0;
   right: 0;
   height: ${progressHeight};
   width: ${props => props.progress || "100"}%;
-  background-color: rgb(${props => props.type === "info" ? props.theme.theme : (props.type === "success" ? "20, 209, 16" : "255, 0, 0")});
+  background-color: rgb(${props => props.type === "info" ? props.theme.theme : resultColors[props.type]});
   transition: all .05s ease-in-out;
 `;
 
 const child_padding = ".35rem";
+
+const ChildrenWithIcon = styled.div`
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+`;
+
+const Icon = styled(InformationIcon)<{ type: ToastType; }>`
+  font-size: 1.25rem;
+  width: 1em;
+  height: 1em;
+  color: rgb(${props => props.type === "info" ? props.theme.theme : resultColors[props.type]});
+`;
 
 const ChildrenWrapper = styled.div`
   padding: ${child_padding} 0;
