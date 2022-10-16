@@ -1,6 +1,6 @@
 {
   "name": "@arconnect/components",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "private": false,
   "publishConfig": {
     "access": "public"
