@@ -23,6 +23,11 @@ export const Button = styled.button<ButtonProps>`
   &:hover:not(:active):not(:disabled) {
     box-shadow: 0 0 0 ${props => props.small ? ".19rem" : ".25rem"} rgba(${props => props.reversed ? props.theme.background : props.theme.theme}, ${props => props.secondary ? ".2" : 1});
   }
+
+  &:disabled {
+    opacity: .87;
+    cursor: not-allowed;
+  }
 `;
 
 export interface ButtonProps {
