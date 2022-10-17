@@ -1,6 +1,11 @@
 import styled from "styled-components";
+import { Loading } from "../Loading";
 
-export const Button = styled.button<ButtonProps>`
+export const Button = styled.button.attrs<ButtonProps>((props) => ({
+  children: props.loading ? 
+    <Loading style={{ margin: ".18rem 0" }} /> : 
+    props.children
+}))<ButtonProps>`
   display: flex;
   color: rgb(${props => props.secondary ? props.theme.theme : props.reversed ? props.theme.primaryText : props.theme.background});
   background-color: rgba(${props => props.secondary ? props.theme.theme + ", .2" : (props.reversed ? props.theme.background : props.theme.theme)  + ", 1"});
@@ -35,4 +40,5 @@ export interface ButtonProps {
   reversed?: boolean;
   small?: boolean;
   fullWidth?: boolean;
+  loading?: boolean;
 }

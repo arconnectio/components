@@ -12,7 +12,8 @@ const defaultArgs: ButtonProps = {
   secondary: false,
   reversed: false,
   fullWidth: false,
-  small: false
+  small: false,
+  loading: false
 };
 
 export const Primary = Template.bind({});
