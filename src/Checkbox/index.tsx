@@ -3,7 +3,7 @@ import { CheckIcon } from "@iconicicons/react";
 import { HTMLProps, useState } from "react";
 import styled from "styled-components";
 
-export function Checkbox({ children, checked = false, onChange, ...props }: CheckboxProps & HTMLProps<HTMLDivElement>) {
+export function Checkbox({ children, checked = false, onChange, ...props }: CheckboxProps & Omit<HTMLProps<HTMLDivElement>, "onChange">) {
   const [state, setState] = useState(checked);
 
   async function toggle() {
