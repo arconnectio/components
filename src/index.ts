@@ -10,5 +10,7 @@ export * from "./Select";
 export * from "./Text";
 export * from "./Tooltip";
 export * from "./Spacer";
+export * from "./FileInput";
+export * from "./Loading";
 
 export { useToasts } from "./Toast/utils";
