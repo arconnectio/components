@@ -26,7 +26,7 @@ export function Text({ children, title, subtitle, heading, noMargin = false, ...
 const TextElement = styled.p<{ size: "h1" | "h2" | "h3" | "p"; noMargin: boolean; }>`
   font-size: ${props => sizes[props.size]};
   color: rgb(${props => props.size === "p" ? props.theme.secondaryText : props.theme.primaryText});
-  font-weight: ${props => props.size === "p" ? "500" : "700"};
+  font-weight: ${props => props.size === "p" ? "500" : (props.size === "h1" ? "700" : "600")};
   margin-top: 0;
   margin-bottom: ${props => props.noMargin ? "0" : "1em"};
 `;
