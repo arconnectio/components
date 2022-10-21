@@ -12,5 +12,6 @@ export * from "./Tooltip";
 export * from "./Spacer";
 export * from "./FileInput";
 export * from "./Loading";
+export * from "./Modal";
 
 export { useToasts } from "./Toast/utils";

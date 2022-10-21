@@ -111,6 +111,7 @@ const ToastWrapper = styled(motion.div).attrs({
   border-radius: 8px;
   //padding: .5rem 1.1rem calc(.5rem + ${progressHeight});
   padding: .5rem 1.1rem;
+  width: calc(100% - 2.2rem);
   overflow: hidden;
   border: ${props => props.displayTheme === "light" ? "none" : "2px solid rgb(" + props.theme.cardBorder + ")"};
   transition: all .23s ease-in-out;
