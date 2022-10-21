@@ -1,4 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Button } from "../Button";
+import { useModal } from "../hooks";
 
 import { Modal, ModalButton } from "./index";
 
@@ -22,3 +24,25 @@ export const Basic: ComponentStory<typeof Modal> = (args) => (
     <p>This is a test</p>
   </Modal>
 );
+
+export const Demo = () => {
+  const modal = useModal();
+
+  return (
+    <>
+      <Button onClick={() => modal.setOpen(true)}>
+        Show modal
+      </Button>
+      <Modal
+        {...modal.bindings}
+        actions={
+          <>
+            <ModalButton onClick={() => modal.setOpen(false)}>Ok</ModalButton>
+          </>
+        }
+      >
+        <p>This is a test modal demo</p>
+      </Modal>
+    </>
+  );
+};
