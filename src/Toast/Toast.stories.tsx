@@ -1,8 +1,9 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { ComponentProps } from "react"
+import { Button } from "../Button";
 
 import { Toast } from "./index";
-import { useToasts } from "./utils"
+import { useToasts } from "./utils";
 
 export default {
   title: "Toast",
@@ -45,4 +46,20 @@ export const Success = Template.bind({});
 Success.args = {
   ...defaultArgs,
   type: "success"
+};
+
+export const Demo = () => {
+  const { setToast } = useToasts();
+
+  return (
+    <Button
+      onClick={() => setToast({
+        type: "info",
+        content: "This is a toast",
+        duration: 3000
+      })}
+    >
+      Show toast!
+    </Button>
+  );
 };

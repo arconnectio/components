@@ -83,10 +83,12 @@ const ToastsWrapper = styled.div`
   display: flex;
   position: fixed;
   flex-direction: column;
+  align-items: flex-end;
   gap: 1rem;
   bottom: 1rem;
-  left: 1rem;
   right: 1rem;
+  max-width: calc(100% - 2rem);
+  width: 420px;
   z-index: 10000;
 `;
 
