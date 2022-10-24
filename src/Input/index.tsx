@@ -44,7 +44,7 @@ const statusColors = {
 export const InputWrapper = styled.div<SharedProps>`
   position: relative;
   display: flex;
-  width: ${props => props.fullWidth ? "100%" : "max-content"};
+  width: ${props => props.fullWidth ? "calc(100% - 5px)" : "max-content"};
   border: 2.5px solid ${props => (props.status === "default" || !props.status) ? "rgb(" + props.theme.cardBorder + ")" : statusColors[props.status]};
   border-radius: ${props => props.small ? "15px" : "22px"};
   overflow: hidden;
