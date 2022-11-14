@@ -1,5 +1,5 @@
 import { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import styled, { createGlobalStyle, DefaultTheme, ThemeProvider } from "styled-components";
 import { ToastData, ToastDataWithID, ToastsContext, useToasts } from "../Toast/utils";
 import { AnimatePresence } from "framer-motion";
 import { Toast } from "../Toast";
@@ -18,16 +18,27 @@ export function Provider({
     setTimeout(() => setToasts(val => val.filter((t) => t.id !== id)), toast.duration);
   }
 
+  const lightTheme: DefaultTheme = {
+    theme: "171, 154, 255",
+    primaryText: "0, 0, 0",
+    secondaryText: "174, 173, 205",
+    cardBorder: "235, 235, 241",
+    background: "255, 255, 255",
+    cardBackground: "255, 255, 255"
+  };
+  const darkTheme: DefaultTheme = {
+    theme: "171, 154, 255",
+    primaryText: "255, 255, 255",
+    secondaryText: "174, 173, 205",
+    cardBorder: "44, 44, 47",
+    background: "0, 0, 0",
+    cardBackground: "35, 35, 35"
+  };
+
   return (
     <>
       <GlobalStyle dark={theme === "dark"} />
-      <ThemeProvider theme={{
-        theme: "171, 154, 255",
-        primaryText: "0, 0, 0",
-        secondaryText: "174, 173, 205",
-        cardBorder: "235, 235, 241",
-        background: "255, 255, 255"
-      }}>
+      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
         <ToastsContext.Provider value={{ toasts, setToast }}>
           <Toasts theme={theme} setToasts={setToasts} />
           {children}

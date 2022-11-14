@@ -107,7 +107,7 @@ const ToastWrapper = styled(motion.div).attrs({
   font-size: 1rem;
   color: #fff;
   font-weight: 500;
-  background-color: #000;
+  background-color: rgb(${props => props.displayTheme === "light" ? "0, 0, 0" : props.theme.cardBackground});
   border-radius: 8px;
   //padding: .5rem 1.1rem calc(.5rem + ${progressHeight});
   padding: .5rem 1.1rem;

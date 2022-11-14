@@ -7,7 +7,7 @@ export const Button = styled.button.attrs<ButtonProps>((props) => ({
     props.children
 }))<ButtonProps>`
   display: flex;
-  color: rgb(${props => props.secondary ? props.theme.theme : props.reversed ? props.theme.primaryText : props.theme.background});
+  color: rgb(${props => props.secondary ? props.theme.theme : props.reversed ? props.theme.primaryText : "255, 255, 255"});
   background-color: rgba(${props => props.secondary ? props.theme.theme + ", .2" : (props.reversed ? props.theme.background : props.theme.theme)  + ", 1"});
   border: none;
   outline: none;
