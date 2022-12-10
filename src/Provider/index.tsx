@@ -19,6 +19,7 @@ export function Provider({
   }
 
   const lightTheme: DefaultTheme = {
+    displayTheme: "light",
     theme: "171, 154, 255",
     primaryText: "0, 0, 0",
     secondaryText: "174, 173, 205",
@@ -27,6 +28,7 @@ export function Provider({
     cardBackground: "255, 255, 255"
   };
   const darkTheme: DefaultTheme = {
+    displayTheme: "dark",
     theme: "171, 154, 255",
     primaryText: "255, 255, 255",
     secondaryText: "174, 173, 205",
