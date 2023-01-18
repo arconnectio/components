@@ -52,7 +52,7 @@ const TooltipElement = styled(motion.div)<{ position: Position; }>`
   font-size: 1rem;
   font-weight: 500;
   color: rgb(${props => props.theme.background});
-  background-color: rgb(${props => props.theme.displayTheme === "dark" ? props.theme.cardBackground : props.theme.primaryText});
+  background-color: rgb(${props => props.theme.primaryText});
   z-index: 100;
   width: max-content;
 
