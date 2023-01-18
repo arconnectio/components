@@ -53,6 +53,7 @@ const Wrapper = styled(Card).attrs({
   align-items: center;
   justify-content: space-between;
   z-index: 1;
+  border-width: 2px;
 `;
 
 const HiddenInput = styled.input.attrs({

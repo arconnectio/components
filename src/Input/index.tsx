@@ -44,9 +44,9 @@ const statusColors = {
 export const InputWrapper = styled.div<SharedProps>`
   position: relative;
   display: flex;
-  width: ${props => props.fullWidth ? "calc(100% - 5px)" : "max-content"};
-  border: 2.5px solid ${props => (props.status === "default" || !props.status) ? "rgb(" + props.theme.cardBorder + ")" : statusColors[props.status]};
-  border-radius: ${props => props.small ? "15px" : "22px"};
+  width: ${props => props.fullWidth ? "calc(100% - 2px)" : "max-content"};
+  border: 1px solid ${props => (props.status === "default" || !props.status) ? "rgb(" + props.theme.cardBorder + ")" : statusColors[props.status]};
+  border-radius: ${props => props.small ? "14" : "18"}px;
   overflow: hidden;
   color: rgb(${props => props.theme.cardBorder});
   transition: all .23s ease-in-out;
@@ -54,12 +54,13 @@ export const InputWrapper = styled.div<SharedProps>`
   &:focus-within, &:active {
     border-color: ${props => (props.status === "default" || !props.status) ? "rgba(" + props.theme.theme + ", .5)" : statusColors[props.status]};
     color: rgb(${props => props.theme.theme});
+    box-shadow: 0 0 0 1px ${props => (props.status === "default" || !props.status) ? "rgba(" + props.theme.theme + ", .5)" : statusColors[props.status]};
   }
 `;
 
 export const Label = styled.p`
   font-size: .7rem;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
   color: rgb(${props => props.theme.secondaryText});
   margin: 0;
@@ -67,7 +68,7 @@ export const Label = styled.p`
 `;
 
 export const side_padding = 1.25;
-export const top_padding = 1;
+export const top_padding = 0.75;
 
 const InputElement = styled.input<SharedProps>`
   outline: none;
@@ -75,8 +76,8 @@ const InputElement = styled.input<SharedProps>`
   background-color: transparent;
   color: rgb(${props => props.theme.theme});
   font-size: ${props => props.small ? ".9rem" : "1.2rem"};
-  font-weight: 600;
-  padding: ${({ small }) => (small ? top_padding / 3 * 2 : top_padding) + "rem"} ${({ small }) => (small ? side_padding / 3 * 2 : top_padding) + "rem"};
+  font-weight: 500;
+  padding: ${({ small }) => (small ? top_padding / 3 * 2 : top_padding) + "rem"} ${({ small }) => (small ? side_padding / 3 * 2 : side_padding) + "rem"};
   width: 100%;
   transition: all .23s ease-in-out;
 

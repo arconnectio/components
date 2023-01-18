@@ -35,8 +35,8 @@ const SelectElement = styled.select<SharedProps>`
   background-color: transparent;
   color: rgb(${props => props.theme.theme});
   font-size: ${props => props.small ? ".9rem" : "1.2rem"};
-  font-weight: 600;
-  padding: ${({ small }) => (small ? top_padding / 3 * 2 : top_padding) + "rem"} ${({ small }) => (small ? side_padding / 3 * 2 : top_padding) + "rem"};
+  font-weight: 500;
+  padding: ${({ small }) => (small ? top_padding / 3 * 2 : top_padding) + "rem"} ${({ small }) => (small ? side_padding / 3 * 2 : side_padding) + "rem"};
   width: 100%;
   -webkit-appearance: none;
   -moz-appearance: none;

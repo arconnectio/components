@@ -25,9 +25,19 @@ export function Checkbox({ children, checked = false, onChange, ...props }: Chec
         <AnimatePresence>
           {state && (
             <IconWrapper
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={{
+                translateX: "-50%",
+                translateY: "100%"
+              }}
+              animate={{
+                translateX: "-50%",
+                translateY: "-50%",
+                
+              }}
+              exit={{
+                translateX: "-50%",
+                translateY: "-100%"
+              }}
               transition={{ ease: "easeInOut", duration: 0.13 }}
             >
               <CheckedIcon />
@@ -68,7 +78,8 @@ const CheckboxWrapper = styled.div`
   width: 1.1rem;
   height: 1.1rem;
   border-radius: 8px;
-  border: 2px solid rgb(${props => props.theme.cardBorder});
+  border: 1px solid rgb(${props => props.theme.cardBorder});
+  overflow: hidden;
 `;
 
 const IconWrapper = styled(motion.div)`
