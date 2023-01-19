@@ -18,9 +18,18 @@ export function Tooltip({ children, content, underline = false, position = "top"
             {...props}
             position={position}
             style={getPosition(position)}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{
+              opacity: 0,
+              transform: (getPosition(position)?.transform || "") + " scale(.95)"
+            }}
+            animate={{
+              opacity: 1,
+              transform: (getPosition(position)?.transform || "") + " scale(1)"
+            }}
+            exit={{
+              opacity: 0,
+              transform: (getPosition(position)?.transform || "") + " scale(.95)"
+            }}
             transition={{ duration: 0.23, ease: "easeInOut" }}
           >
             {content}
@@ -40,19 +49,19 @@ export interface TooltipProps {
 
 const TooltipWrapper = styled.div<{ underline?: boolean; }>`
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   ${props => props.underline ? "border-bottom: 1px dotted rgb(" + props.theme.cardBorder + ");" : ""}
   ${props => props.underline ? "cursor: pointer;" : ""}
 `;
 
 const TooltipElement = styled(motion.div)<{ position: Position; }>`
   position: absolute;
-  padding: .24rem .52rem;
+  padding: .37rem .58rem;
   border-radius: 7px;
-  font-size: 1rem;
-  font-weight: 500;
-  color: rgb(${props => props.theme.background});
-  background-color: rgb(${props => props.theme.primaryText});
+  font-size: .86rem;
+  font-weight: 600;
+  color: #eaeaea;
+  background-color: #18191C;
   z-index: 100;
   width: max-content;
 
