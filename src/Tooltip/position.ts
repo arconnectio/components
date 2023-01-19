@@ -94,11 +94,23 @@ export function getArrowPosition(position: Position) {
   style += ": -8px;\n";
 
   if (position.startsWith("top") || position.startsWith("bottom")) {
-    style += "left: 50%;\n";
-    style += "transform: translate(-50%, 0);";
+    if (position.includes("Start")) {
+      style += "left: 8px;";
+    } else if (position.includes("End")) {
+      style += "right: 8px;"
+    } else {
+      style += "left: 50%;\n";
+      style += "transform: translate(-50%, 0);";
+    }
   } else {
-    style += "top: 50%;\n";
-    style += "transform: translate(0, -50%);";
+    if (position.includes("Start")) {
+      style += "top: 8px;";
+    } else if (position.includes("End")) {
+      style += "bottom: 8px;";
+    } else {
+      style += "top: 50%;\n";
+      style += "transform: translate(0, -50%);";
+    }
   }
 
   return style;
