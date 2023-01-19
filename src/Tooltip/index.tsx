@@ -69,7 +69,7 @@ const TooltipElement = styled(motion.div)<{ position: Position; }>`
     position: absolute;
     content: "";
     border: 4px solid;
-    border-color: ${props => props.position.startsWith("top") ? "rgb(" + props.theme.primaryText + ")" : "transparent"} ${props => props.position.startsWith("right") ? "rgb(" + props.theme.primaryText + ")" : "transparent"} ${props => props.position.startsWith("bottom") ? "rgb(" + props.theme.primaryText + ")" : "transparent"} ${props => props.position.startsWith("left") ? "rgb(" + props.theme.primaryText + ")" : "transparent"};
+    border-color: ${props => props.position.startsWith("top") ? "#18191C" : "transparent"} ${props => props.position.startsWith("right") ? "#18191C" : "transparent"} ${props => props.position.startsWith("bottom") ? "#18191C" : "transparent"} ${props => props.position.startsWith("left") ? "#18191C" : "transparent"};
     ${props => getArrowPosition(props.position)}
   }
 `;
