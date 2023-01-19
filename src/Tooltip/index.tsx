@@ -64,6 +64,7 @@ const TooltipElement = styled(motion.div)<{ position: Position; }>`
   background-color: #18191C;
   z-index: 100;
   width: max-content;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, .14);
 
   &::after {
     position: absolute;
