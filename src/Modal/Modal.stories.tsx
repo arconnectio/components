@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Spacer } from "../Spacer"
 import { Button } from "../Button";
 import { useModal } from "../hooks";
 
@@ -22,6 +23,7 @@ export const Basic: ComponentStory<typeof Modal> = (args) => (
     }
   >
     <p>This is a test</p>
+    <Spacer y={200} />
   </Modal>
 );
 

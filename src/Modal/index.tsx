@@ -47,7 +47,7 @@ const ModalWrapper = styled(motion.div).attrs({
 })`
   position: fixed;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   z-index: 11000;
   background-color: rgba(0, 0, 0, .7);
@@ -55,6 +55,9 @@ const ModalWrapper = styled(motion.div).attrs({
   left: 0;
   right: 0;
   bottom: 0;
+  max-height: 100%;
+  overflow-y: auto;
+  padding: 2rem 0;
 `;
 
 const ModalCard = styled(Card)`
@@ -63,6 +66,7 @@ const ModalCard = styled(Card)`
   max-width: 47%;
   min-width: 30%;
   overflow: hidden;
+  margin: auto;
 
   @media screen and (max-width: 720px) {
     max-width: 94vw;
