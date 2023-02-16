@@ -2,9 +2,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { PropsWithChildren, ReactNode } from "react";
 import { Card } from "../Card";
 import styled from "styled-components";
+import ReactDOM from "react-dom";
 
-export function Modal({ children, open, setOpen, actions }: PropsWithChildren<ModalProps>) {
-  return (
+export function Modal({ children, open, setOpen, actions, root }: PropsWithChildren<ModalProps>) {
+  return ReactDOM.createPortal(
     <AnimatePresence>
       {open && (
         <ModalWrapper onClick={() => setOpen(false)}>
@@ -20,7 +21,8 @@ export function Modal({ children, open, setOpen, actions }: PropsWithChildren<Mo
           </ModalCard>
         </ModalWrapper>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.getElementById("root") as any
   );
 }
 
@@ -107,4 +109,5 @@ interface ModalProps {
   open: boolean;
   setOpen: (open: boolean) => any;
   actions?: ReactNode;
+  root?: Element | DocumentFragment;
 }
