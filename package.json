@@ -7,10 +7,8 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
     "fmt": "prettier . --write"
   },
   "files": [
