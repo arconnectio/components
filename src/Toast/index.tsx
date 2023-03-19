@@ -1,10 +1,23 @@
-import { CheckCircleIcon, CloseIcon, InformationIcon, TargetIcon } from "@iconicicons/react";
+import {
+  CheckCircleIcon,
+  CloseIcon,
+  InformationIcon,
+  TargetIcon
+} from "@iconicicons/react";
 import { PropsWithChildren, useEffect, useMemo, useState } from "react";
 import { DisplayTheme } from "../Provider";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export function Toast({ children, duration, action, displayTheme, type = "info", close, addedAt }: PropsWithChildren<ToastProps>) {
+export function Toast({
+  children,
+  duration,
+  action,
+  displayTheme,
+  type = "info",
+  close,
+  addedAt
+}: PropsWithChildren<ToastProps>) {
   const [progress, setProgress] = useState<number>(100);
 
   // update progress based on the total duration
@@ -14,10 +27,10 @@ export function Toast({ children, duration, action, displayTheme, type = "info",
         clearInterval(interval);
         return;
       }
-      
+
       const time = new Date().getTime();
 
-      setProgress(100 - (time - addedAt) / duration * 100);
+      setProgress(100 - ((time - addedAt) / duration) * 100);
     }, duration / 100);
 
     return () => clearInterval(interval);
@@ -27,19 +40,25 @@ export function Toast({ children, duration, action, displayTheme, type = "info",
     <ToastWrapper displayTheme={displayTheme}>
       <ChildrenWithIcon>
         <Icon
-          as={type === "info" ? InformationIcon : (type === "error" ? TargetIcon : CheckCircleIcon)}
+          as={
+            type === "info"
+              ? InformationIcon
+              : type === "error"
+              ? TargetIcon
+              : CheckCircleIcon
+          }
           type={type}
         />
-        <ChildrenWrapper>
-          {children}
-        </ChildrenWrapper>
+        <ChildrenWrapper>{children}</ChildrenWrapper>
       </ChildrenWithIcon>
       <Actions>
         {action && (
-          <ActionButton onClick={async () => {
-            await action.task();
-            close();
-          }}>
+          <ActionButton
+            onClick={async () => {
+              await action.task();
+              close();
+            }}
+          >
             {action.name}
           </ActionButton>
         )}
@@ -68,7 +87,7 @@ export type ToastType = "error" | "success" | "info";
 export interface ToastAction {
   name: string;
   task: (...args: any[]) => any;
-};
+}
 
 const progressHeight = ".2rem";
 
@@ -76,7 +95,7 @@ const ToastWrapper = styled(motion.div).attrs({
   initial: {
     opacity: 0,
     translateY: "-100%",
-    scale: .85,
+    scale: 0.85,
     transition: {
       ease: "easeInOut",
       duration: 0.23
@@ -107,14 +126,20 @@ const ToastWrapper = styled(motion.div).attrs({
   font-size: 1rem;
   color: #fff;
   font-weight: 500;
-  background-color: rgb(${props => props.displayTheme === "light" ? "0, 0, 0" : props.theme.cardBackground});
+  background-color: rgb(
+    ${(props) =>
+      props.displayTheme === "light" ? "0, 0, 0" : props.theme.cardBackground}
+  );
   border-radius: 8px;
   //padding: .5rem 1.1rem calc(.5rem + ${progressHeight});
-  padding: .5rem 1.1rem;
+  padding: 0.5rem 1.1rem;
   width: calc(100% - 2.2rem);
   overflow: hidden;
-  border: ${props => props.displayTheme === "light" ? "none" : "2px solid rgb(" + props.theme.cardBorder + ")"};
-  transition: all .23s ease-in-out;
+  border: ${(props) =>
+    props.displayTheme === "light"
+      ? "none"
+      : "2px solid rgb(" + props.theme.cardBorder + ")"};
+  transition: all 0.23s ease-in-out;
 `;
 
 const resultColors = {
@@ -122,14 +147,17 @@ const resultColors = {
   error: "255, 0, 0"
 };
 
-const Progress = styled.div<{ type: ToastType; progress: number; }>`
+const Progress = styled.div<{ type: ToastType; progress: number }>`
   position: absolute;
   bottom: 0;
   right: 0;
   height: ${progressHeight};
-  width: ${props => props.progress || "100"}%;
-  background-color: rgb(${props => props.type === "info" ? props.theme.theme : resultColors[props.type]});
-  transition: all .05s ease-in-out;
+  width: ${(props) => props.progress || "100"}%;
+  background-color: rgb(
+    ${(props) =>
+      props.type === "info" ? props.theme.theme : resultColors[props.type]}
+  );
+  transition: all 0.05s ease-in-out;
 `;
 
 const child_padding = ".35rem";
@@ -137,14 +165,17 @@ const child_padding = ".35rem";
 const ChildrenWithIcon = styled.div`
   display: flex;
   align-items: center;
-  gap: .45rem;
+  gap: 0.45rem;
 `;
 
-const Icon = styled(InformationIcon)<{ type: ToastType; }>`
+const Icon = styled(InformationIcon)<{ type: ToastType }>`
   font-size: 1.25rem;
   width: 1em;
   height: 1em;
-  color: rgb(${props => props.type === "info" ? props.theme.theme : resultColors[props.type]});
+  color: rgb(
+    ${(props) =>
+      props.type === "info" ? props.theme.theme : resultColors[props.type]}
+  );
 `;
 
 const ChildrenWrapper = styled.div`
@@ -154,7 +185,7 @@ const ChildrenWrapper = styled.div`
 const Actions = styled.div`
   display: flex;
   align-items: center;
-  gap: .4rem;
+  gap: 0.4rem;
 `;
 
 const action_button_font_size = "1rem";
@@ -167,12 +198,12 @@ const ActionButton = styled.button`
   outline: none;
   cursor: pointer;
   border-radius: 4px;
-  padding: ${child_padding} .9rem;
+  padding: ${child_padding} 0.9rem;
   background-color: transparent;
-  transition: all .23s ease-in-out;
+  transition: all 0.23s ease-in-out;
 
   &:hover {
-    background-color: rgba(255, 255, 255, .22);
+    background-color: rgba(255, 255, 255, 0.22);
   }
 `;
 

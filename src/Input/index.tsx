@@ -2,20 +2,34 @@ import { HTMLProps, ReactNode, useMemo } from "react";
 import { InputStatus } from "../hooks";
 import styled from "styled-components";
 
-export function Input({ label, fullWidth, small, status = "default", icon, ...props }: SharedProps & InputProps & HTMLProps<HTMLInputElement>) {
-  const inputProps = useMemo<any>(() => ({ fullWidth, small, status, ...props }), [fullWidth, small, status, props]);
+export function Input({
+  label,
+  fullWidth,
+  small,
+  status = "default",
+  icon,
+  ...props
+}: SharedProps & InputProps & HTMLProps<HTMLInputElement>) {
+  const inputProps = useMemo<any>(
+    () => ({ fullWidth, small, status, ...props }),
+    [fullWidth, small, status, props]
+  );
 
   return (
     <>
-      {label && (
-        <Label>
-          {label}
-        </Label>
-      )}
-      <InputWrapper fullWidth={fullWidth} small={small} status={status ?? "default"}>
+      {label && <Label>{label}</Label>}
+      <InputWrapper
+        fullWidth={fullWidth}
+        small={small}
+        status={status ?? "default"}
+      >
         <InputElement {...inputProps} />
         {icon && (
-          <IconWrapper fullWidth={fullWidth} small={small} status={status ?? "default"}>
+          <IconWrapper
+            fullWidth={fullWidth}
+            small={small}
+            status={status ?? "default"}
+          >
             {icon}
           </IconWrapper>
         )}
@@ -44,27 +58,39 @@ const statusColors = {
 export const InputWrapper = styled.div<SharedProps>`
   position: relative;
   display: flex;
-  width: ${props => props.fullWidth ? "calc(100% - 2px)" : "max-content"};
-  border: 1px solid ${props => (props.status === "default" || !props.status) ? "rgb(" + props.theme.cardBorder + ")" : statusColors[props.status]};
-  border-radius: ${props => props.small ? "14" : "18"}px;
+  width: ${(props) => (props.fullWidth ? "calc(100% - 2px)" : "max-content")};
+  border: 1px solid
+    ${(props) =>
+      props.status === "default" || !props.status
+        ? "rgb(" + props.theme.cardBorder + ")"
+        : statusColors[props.status]};
+  border-radius: ${(props) => (props.small ? "14" : "18")}px;
   overflow: hidden;
-  color: rgb(${props => props.theme.cardBorder});
-  transition: all .23s ease-in-out;
+  color: rgb(${(props) => props.theme.cardBorder});
+  transition: all 0.23s ease-in-out;
 
-  &:focus-within, &:active {
-    border-color: ${props => (props.status === "default" || !props.status) ? "rgba(" + props.theme.theme + ", .5)" : statusColors[props.status]};
-    color: rgb(${props => props.theme.theme});
-    box-shadow: 0 0 0 1px ${props => (props.status === "default" || !props.status) ? "rgba(" + props.theme.theme + ", .5)" : statusColors[props.status]};
+  &:focus-within,
+  &:active {
+    border-color: ${(props) =>
+      props.status === "default" || !props.status
+        ? "rgba(" + props.theme.theme + ", .5)"
+        : statusColors[props.status]};
+    color: rgb(${(props) => props.theme.theme});
+    box-shadow: 0 0 0 1px
+      ${(props) =>
+        props.status === "default" || !props.status
+          ? "rgba(" + props.theme.theme + ", .5)"
+          : statusColors[props.status]};
   }
 `;
 
 export const Label = styled.p`
-  font-size: .7rem;
+  font-size: 0.7rem;
   font-weight: 500;
   text-transform: uppercase;
-  color: rgb(${props => props.theme.secondaryText});
+  color: rgb(${(props) => props.theme.secondaryText});
   margin: 0;
-  margin-bottom: .8em;
+  margin-bottom: 0.8em;
 `;
 
 export const side_padding = 1.25;
@@ -74,23 +100,25 @@ const InputElement = styled.input<SharedProps>`
   outline: none;
   border: none;
   background-color: transparent;
-  color: rgb(${props => props.theme.theme});
-  font-size: ${props => props.small ? ".9rem" : "1.2rem"};
+  color: rgb(${(props) => props.theme.theme});
+  font-size: ${(props) => (props.small ? ".9rem" : "1.2rem")};
   font-weight: 500;
-  padding: ${({ small }) => (small ? top_padding / 3 * 2 : top_padding) + "rem"} ${({ small }) => (small ? side_padding / 3 * 2 : side_padding) + "rem"};
+  padding: ${({ small }) =>
+      (small ? (top_padding / 3) * 2 : top_padding) + "rem"}
+    ${({ small }) => (small ? (side_padding / 3) * 2 : side_padding) + "rem"};
   width: 100%;
-  transition: all .23s ease-in-out;
+  transition: all 0.23s ease-in-out;
 
   ::-webkit-input-placeholder {
-    color: rgb(${props => props.theme.cardBorder});
+    color: rgb(${(props) => props.theme.cardBorder});
   }
 
   :-ms-input-placeholder {
-    color: rgb(${props => props.theme.cardBorder});
+    color: rgb(${(props) => props.theme.cardBorder});
   }
 
   ::placeholder {
-    color: rgb(${props => props.theme.cardBorder});
+    color: rgb(${(props) => props.theme.cardBorder});
   }
 `;
 
@@ -98,8 +126,8 @@ export const IconWrapper = styled.div<SharedProps>`
   position: absolute;
   display: flex;
   z-index: 10;
-  font-size: ${props => props.small ? ".9rem" : "1.2rem"};
+  font-size: ${(props) => (props.small ? ".9rem" : "1.2rem")};
   top: 50%;
-  right: ${props => props.small ? side_padding / 3 * 2 : side_padding}rem;
+  right: ${(props) => (props.small ? (side_padding / 3) * 2 : side_padding)}rem;
   transform: translateY(-50%);
 `;

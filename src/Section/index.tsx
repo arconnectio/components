@@ -13,7 +13,8 @@ const sizes = {
 
 export const Section = styled.div<SectionProps>`
   position: relative;
-  padding: 1rem ${props => sizes[props.type || "popup"][props.size || "normal"]};
+  padding: 1rem
+    ${(props) => sizes[props.type || "popup"][props.size || "normal"]};
 `;
 
 export interface SectionProps {

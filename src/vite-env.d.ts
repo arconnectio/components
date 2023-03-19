@@ -1,7 +1,7 @@
-import type { DisplayTheme } from "~Provider"
+import type { DisplayTheme } from "./Provider";
 import "styled-components";
 
-/// <reference types="react-scripts" />
+/// <reference types="vite/client" />
 
 declare module "styled-components" {
   export interface DefaultTheme {

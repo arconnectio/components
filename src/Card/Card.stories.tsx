@@ -5,13 +5,17 @@ import { Card } from "./index";
 
 export default {
   title: "Card",
-  component: Card,
+  component: Card
 } as ComponentMeta<typeof Card>;
 
 export const Normal: ComponentStory<typeof Card> = (args) => (
   <Card {...args}>
     <Text heading>Card title</Text>
-    <Text style={{ margin: 0 }}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur, alias sequi ab natus porro, nisi iste perferendis hic molestiae eligendi at deleniti quis quidem saepe odio deserunt dolorum architecto velit?</Text>
+    <Text style={{ margin: 0 }}>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur,
+      alias sequi ab natus porro, nisi iste perferendis hic molestiae eligendi
+      at deleniti quis quidem saepe odio deserunt dolorum architecto velit?
+    </Text>
   </Card>
 );
 

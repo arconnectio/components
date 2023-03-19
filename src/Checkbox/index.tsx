@@ -3,7 +3,12 @@ import { CheckIcon } from "@iconicicons/react";
 import { HTMLProps, useState } from "react";
 import styled from "styled-components";
 
-export function Checkbox({ children, checked = false, onChange, ...props }: CheckboxProps & Omit<HTMLProps<HTMLDivElement>, "onChange">) {
+export function Checkbox({
+  children,
+  checked = false,
+  onChange,
+  ...props
+}: CheckboxProps & Omit<HTMLProps<HTMLDivElement>, "onChange">) {
   const [state, setState] = useState(checked);
 
   async function toggle() {
@@ -20,7 +25,7 @@ export function Checkbox({ children, checked = false, onChange, ...props }: Chec
   }
 
   return (
-    <CheckboxWithLabel {...props as any} onClick={toggle}>
+    <CheckboxWithLabel {...(props as any)} onClick={toggle}>
       <CheckboxWrapper>
         <AnimatePresence>
           {state && (
@@ -31,8 +36,7 @@ export function Checkbox({ children, checked = false, onChange, ...props }: Chec
               }}
               animate={{
                 translateX: "-50%",
-                translateY: "-50%",
-                
+                translateY: "-50%"
               }}
               exit={{
                 translateX: "-50%",
@@ -45,11 +49,7 @@ export function Checkbox({ children, checked = false, onChange, ...props }: Chec
           )}
         </AnimatePresence>
       </CheckboxWrapper>
-      {children && (
-        <Label>
-          {children}
-        </Label>
-      )}
+      {children && <Label>{children}</Label>}
     </CheckboxWithLabel>
   );
 }
@@ -62,14 +62,14 @@ interface CheckboxProps {
 const CheckboxWithLabel = styled.div`
   display: flex;
   align-items: center;
-  gap: .46rem;
+  gap: 0.46rem;
   cursor: pointer;
 `;
 
 const Label = styled.p`
   font-size: 1rem;
   font-weight: 500;
-  color: rgb(${props => props.theme.theme});
+  color: rgb(${(props) => props.theme.theme});
   margin: 0;
 `;
 
@@ -78,7 +78,7 @@ const CheckboxWrapper = styled.div`
   width: 1.1rem;
   height: 1.1rem;
   border-radius: 8px;
-  border: 1px solid rgb(${props => props.theme.cardBorder});
+  border: 1px solid rgb(${(props) => props.theme.cardBorder});
   overflow: hidden;
   flex-shrink: 0;
 `;
@@ -93,7 +93,7 @@ const IconWrapper = styled(motion.div)`
 
 const CheckedIcon = styled(CheckIcon)`
   font-size: 1rem;
-  color: rgb(${props => props.theme.theme});
+  color: rgb(${(props) => props.theme.theme});
   width: 1.1rem;
   height: 1.1rem;
 `;

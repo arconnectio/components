@@ -6,10 +6,12 @@ import { ComponentProps } from "react";
 
 export default {
   title: "Input",
-  component: Input,
+  component: Input
 } as ComponentMeta<typeof Input>;
 
-const Template: ComponentStory<typeof Input> = (args) => <Input type="text" {...args} />;
+const Template: ComponentStory<typeof Input> = (args) => (
+  <Input type="text" {...args} />
+);
 const defaultArgs: ComponentProps<typeof Input> = {
   small: false,
   status: "default",

@@ -4,10 +4,12 @@ import { Button, ButtonProps } from "./index";
 
 export default {
   title: "Button",
-  component: Button,
+  component: Button
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args}>Test</Button>;
+const Template: ComponentStory<typeof Button> = (args) => (
+  <Button {...args}>Test</Button>
+);
 const defaultArgs: ButtonProps = {
   secondary: false,
   reversed: false,

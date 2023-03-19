@@ -1,10 +1,23 @@
-import { PropsWithChildren, ReactNode, useEffect, useRef, useState } from "react";
+import {
+  PropsWithChildren,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 import { Position, getPosition, TooltipPosition } from "../Tooltip/position";
 import { AnimatePresence, motion } from "framer-motion";
 import { Card } from "../Card";
 import styled from "styled-components";
 
-export function Popover({ children, content, position = "top", customPos, mode = "click", ...props }: PropsWithChildren<PopoverProps>) {
+export function Popover({
+  children,
+  content,
+  position = "top",
+  customPos,
+  mode = "click",
+  ...props
+}: PropsWithChildren<PopoverProps>) {
   const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
@@ -20,7 +33,8 @@ export function Popover({ children, content, position = "top", customPos, mode =
 
   function handleClicks(e: MouseEvent) {
     if (mode !== "click") return;
-    if (!isOpen && wrapperRef.current?.contains(e.target as Node)) setOpen(true);
+    if (!isOpen && wrapperRef.current?.contains(e.target as Node))
+      setOpen(true);
     else if (isOpen && !popoverRef.current?.contains(e.target as Node)) {
       // prevent any events
       e.preventDefault();
@@ -51,9 +65,7 @@ export function Popover({ children, content, position = "top", customPos, mode =
             transition={{ duration: 0.23, ease: "easeInOut" }}
             ref={popoverRef as any}
           >
-            <Card {...props}>
-              {content}
-            </Card>
+            <Card {...props}>{content}</Card>
           </PopoverElement>
         )}
       </AnimatePresence>
@@ -67,7 +79,7 @@ export interface PopoverProps {
   position?: Position;
   mode?: "click" | "hover";
   customPos?: TooltipPosition;
-};
+}
 
 const PopoverWrapper = styled.div`
   position: relative;

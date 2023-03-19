@@ -5,7 +5,7 @@ import { ComponentProps } from "react";
 
 export default {
   title: "Select",
-  component: Select,
+  component: Select
 } as ComponentMeta<typeof Select>;
 
 const Template: ComponentStory<typeof Select> = (args) => (

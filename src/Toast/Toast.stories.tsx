@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { ComponentProps } from "react"
+import { ComponentProps } from "react";
 import { Button } from "../Button";
 
 import { Toast } from "./index";
@@ -7,13 +7,11 @@ import { useToasts } from "./utils";
 
 export default {
   title: "Toast",
-  component: Toast,
+  component: Toast
 } as ComponentMeta<typeof Toast>;
 
 const Template: ComponentStory<typeof Toast> = (args) => (
-  <Toast {...args}>
-    This is the toast content
-  </Toast>
+  <Toast {...args}>This is the toast content</Toast>
 );
 const defaultArgs: ComponentProps<typeof Toast> = {
   close: () => {},
@@ -53,11 +51,13 @@ export const Demo = () => {
 
   return (
     <Button
-      onClick={() => setToast({
-        type: "info",
-        content: "This is a toast",
-        duration: 3000
-      })}
+      onClick={() =>
+        setToast({
+          type: "info",
+          content: "This is a toast",
+          duration: 3000
+        })
+      }
     >
       Show toast!
     </Button>

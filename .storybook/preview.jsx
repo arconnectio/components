@@ -5,10 +5,10 @@ export const parameters = {
   controls: {
     matchers: {
       color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
-}
+      date: /Date$/
+    }
+  }
+};
 
 export const decorators = [
   (Story, context) => (

@@ -4,20 +4,20 @@ import { Card } from "../Card";
 import styled from "styled-components";
 import ReactDOM from "react-dom";
 
-export function Modal({ children, open, setOpen, actions, root }: PropsWithChildren<ModalProps>) {
+export function Modal({
+  children,
+  open,
+  setOpen,
+  actions,
+  root
+}: PropsWithChildren<ModalProps>) {
   return ReactDOM.createPortal(
     <AnimatePresence>
       {open && (
         <ModalWrapper onClick={() => setOpen(false)}>
-          <ModalCard onClick={e => e.stopPropagation()}>
-            <ModalContent>
-              {children}
-            </ModalContent>
-            {actions && (
-              <ModalActions>
-                {actions}
-              </ModalActions>
-            )}
+          <ModalCard onClick={(e) => e.stopPropagation()}>
+            <ModalContent>{children}</ModalContent>
+            {actions && <ModalActions>{actions}</ModalActions>}
           </ModalCard>
         </ModalWrapper>
       )}
@@ -52,7 +52,7 @@ const ModalWrapper = styled(motion.div).attrs({
   align-items: flex-start;
   justify-content: center;
   z-index: 11000;
-  background-color: rgba(0, 0, 0, .7);
+  background-color: rgba(0, 0, 0, 0.7);
   top: 0;
   left: 0;
   right: 0;
@@ -64,7 +64,7 @@ const ModalWrapper = styled(motion.div).attrs({
 
 const ModalCard = styled(Card)`
   padding: 0;
-  background-color: rgb(${props => props.theme.background});
+  background-color: rgb(${(props) => props.theme.background});
   max-width: 47%;
   min-width: 30%;
   overflow: hidden;
@@ -88,20 +88,20 @@ const ModalActions = styled.div`
 export const ModalButton = styled.button`
   outline: none;
   border: none;
-  border-top: 1px solid rgb(${props => props.theme.cardBorder});
+  border-top: 1px solid rgb(${(props) => props.theme.cardBorder});
   background-color: transparent;
   text-align: center;
   width: 100%;
   padding: 1rem 0;
-  color: rgb(${props => props.theme.secondaryText});
+  color: rgb(${(props) => props.theme.secondaryText});
   background-color: transparent;
   font-weight: 600;
-  font-size: .9rem;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: all .23s ease-in-out;
+  transition: all 0.23s ease-in-out;
 
   &:hover {
-    background-color: rgba(${props => props.theme.cardBorder}, .35);
+    background-color: rgba(${(props) => props.theme.cardBorder}, 0.35);
   }
 `;
 

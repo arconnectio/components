@@ -1,6 +1,15 @@
 import { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
-import styled, { createGlobalStyle, DefaultTheme, ThemeProvider } from "styled-components";
-import { ToastData, ToastDataWithID, ToastsContext, useToasts } from "../Toast/utils";
+import styled, {
+  createGlobalStyle,
+  DefaultTheme,
+  ThemeProvider
+} from "styled-components";
+import {
+  ToastData,
+  ToastDataWithID,
+  ToastsContext,
+  useToasts
+} from "../Toast/utils";
 import { AnimatePresence } from "framer-motion";
 import { Toast } from "../Toast";
 import { nanoid } from "nanoid";
@@ -14,8 +23,14 @@ export function Provider({
   function setToast(toast: ToastData) {
     const id = nanoid();
 
-    setToasts(val => [...val, { ...toast, id, addedAt: new Date().getTime() }]);
-    setTimeout(() => setToasts(val => val.filter((t) => t.id !== id)), toast.duration);
+    setToasts((val) => [
+      ...val,
+      { ...toast, id, addedAt: new Date().getTime() }
+    ]);
+    setTimeout(
+      () => setToasts((val) => val.filter((t) => t.id !== id)),
+      toast.duration
+    );
   }
 
   const lightTheme: DefaultTheme = {
@@ -63,7 +78,7 @@ const Toasts = ({ setToasts, theme }: ToastsProps) => {
             type={toast.type}
             displayTheme={theme}
             close={(id) => {
-              setToasts(val => val.filter((t) => t.id !== id))
+              setToasts((val) => val.filter((t) => t.id !== id));
             }}
             addedAt={toast.addedAt}
             key={i}
@@ -76,12 +91,12 @@ const Toasts = ({ setToasts, theme }: ToastsProps) => {
   );
 };
 
-const GlobalStyle = createGlobalStyle<{ dark: boolean; }>`
+const GlobalStyle = createGlobalStyle<{ dark: boolean }>`
   @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
   body {
-    background-color: ${props => props.dark ? "#000" : "#fff"};
-    color: ${props => props.dark ? "#fff" : "#000"};
+    background-color: ${(props) => (props.dark ? "#000" : "#fff")};
+    color: ${(props) => (props.dark ? "#fff" : "#000")};
     font-family: 'Manrope VF', 'Manrope', sans-serif;
     letter-spacing: .5px;
   }

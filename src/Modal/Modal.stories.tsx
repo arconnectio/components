@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Spacer } from "../Spacer"
+import { Spacer } from "../Spacer";
 import { Button } from "../Button";
 import { useModal } from "../hooks";
 
@@ -7,7 +7,7 @@ import { Modal, ModalButton } from "./index";
 
 export default {
   title: "Modal",
-  component: Modal,
+  component: Modal
 } as ComponentMeta<typeof Modal>;
 
 export const Basic: ComponentStory<typeof Modal> = (args) => (
@@ -32,9 +32,7 @@ export const Demo = () => {
 
   return (
     <>
-      <Button onClick={() => modal.setOpen(true)}>
-        Show modal
-      </Button>
+      <Button onClick={() => modal.setOpen(true)}>Show modal</Button>
       <Modal
         {...modal.bindings}
         actions={

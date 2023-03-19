@@ -5,7 +5,13 @@ import { Card } from "../Card";
 import { Text } from "../Text";
 import styled from "styled-components";
 
-export function FileInput({ children, accept, multiple, inputRef, ...props }: Omit<HTMLProps<HTMLDivElement>, "ref"> & FileInputProps) {
+export function FileInput({
+  children,
+  accept,
+  multiple,
+  inputRef,
+  ...props
+}: Omit<HTMLProps<HTMLDivElement>, "ref"> & FileInputProps) {
   // grab file names
   const [fileNames, setFileNames] = useState<string[]>([]);
 
@@ -21,7 +27,7 @@ export function FileInput({ children, accept, multiple, inputRef, ...props }: Om
 
       // map file names
       setFileNames(Array.from(files).map((file) => file.name));
-    }
+    };
 
     inputRef.current.addEventListener("change", listener);
 
@@ -29,18 +35,14 @@ export function FileInput({ children, accept, multiple, inputRef, ...props }: Om
   }, [inputRef?.current]);
 
   return (
-    <Wrapper {...props as any}>
+    <Wrapper {...(props as any)}>
       <Text noMargin>
         {(fileNames.length === 0 && children) || fileNames.join(", ")}
       </Text>
       <SelectFileButton onClick={() => inputRef?.current?.click()}>
         <FileIcon />
       </SelectFileButton>
-      <HiddenInput
-        accept={accept}
-        multiple={multiple}
-        ref={inputRef as any}
-      />
+      <HiddenInput accept={accept} multiple={multiple} ref={inputRef as any} />
     </Wrapper>
   );
 }
@@ -77,7 +79,7 @@ const SelectFileButton = styled(Button).attrs({
   secondary: true
 })`
   z-index: 20;
-  padding: .9rem;
+  padding: 0.9rem;
   border-radius: 20px;
 `;
 

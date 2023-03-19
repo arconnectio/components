@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 
 export function useModal(defaultOpen = false) {
   const [isOpen, setOpen] = useState(defaultOpen);

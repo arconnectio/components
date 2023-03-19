@@ -5,13 +5,11 @@ import { ComponentProps } from "react";
 
 export default {
   title: "Tooltip",
-  component: Tooltip,
+  component: Tooltip
 } as ComponentMeta<typeof Tooltip>;
 
 const Template: ComponentStory<typeof Tooltip> = (args) => (
-  <Tooltip {...args}>
-    Hover this
-  </Tooltip>
+  <Tooltip {...args}>Hover this</Tooltip>
 );
 const defaultArgs: ComponentProps<typeof Tooltip> = {
   position: "bottom",

@@ -1,15 +1,16 @@
-export type Position = "top" |
-  "topStart" |
-  "topEnd" |
-  "left" |
-  "leftStart" |
-  "leftEnd" |
-  "bottom" |
-  "bottomStart" |
-  "bottomEnd"| 
-  "right" |
-  "rightStart" |
-  "rightEnd";
+export type Position =
+  | "top"
+  | "topStart"
+  | "topEnd"
+  | "left"
+  | "leftStart"
+  | "leftEnd"
+  | "bottom"
+  | "bottomStart"
+  | "bottomEnd"
+  | "right"
+  | "rightStart"
+  | "rightEnd";
 
 export interface TooltipPosition {
   top?: string;
@@ -72,7 +73,7 @@ export function getPosition(position: Position): TooltipPosition {
     rightEnd: {
       bottom: "0",
       left: "125%"
-    },
+    }
   };
 
   return positions[position];
@@ -97,7 +98,7 @@ export function getArrowPosition(position: Position) {
     if (position.includes("Start")) {
       style += "left: 8px;";
     } else if (position.includes("End")) {
-      style += "right: 8px;"
+      style += "right: 8px;";
     } else {
       style += "left: 50%;\n";
       style += "transform: translate(-50%, 0);";
