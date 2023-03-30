@@ -22,7 +22,7 @@ export function Modal({
         </ModalWrapper>
       )}
     </AnimatePresence>,
-    document.getElementById("root") as any
+    root || document.getElementById("root") as any
   );
 }
 
