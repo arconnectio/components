@@ -49,7 +49,7 @@ export function Provider({
     secondaryText: "174, 173, 205",
     cardBorder: "44, 44, 47",
     background: "0, 0, 0",
-    cardBackground: "35, 35, 35"
+    cardBackground: "22, 22, 22"
   };
 
   return (
