@@ -67,7 +67,7 @@ export const InputWrapper = styled.div<SharedProps>`
   border-radius: ${(props) => (props.small ? "14" : "18")}px;
   overflow: hidden;
   color: rgb(${(props) => props.theme.cardBorder});
-  transition: all 0.23s ease-in-out;
+  transition: all 0.13s ease-in-out;
 
   &:focus-within,
   &:active {
