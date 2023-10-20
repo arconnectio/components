@@ -1,6 +1,5 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { CheckIcon } from "@iconicicons/react";
-import { HTMLProps, useState } from "react";
+import { HTMLProps, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export function Checkbox({
@@ -10,6 +9,10 @@ export function Checkbox({
   ...props
 }: CheckboxProps & Omit<HTMLProps<HTMLDivElement>, "onChange">) {
   const [state, setState] = useState(checked);
+  const checkedPath = "M5.75 12.8665L8.33995 16.4138C9.15171 17.5256 10.8179 17.504 11.6006 16.3715L18.25 6.75";
+  const uncheckedPath = "M17.25 6.75L6.75 17.25 M6.75 6.75L17.25 17.25";
+
+  useEffect(() => setState(checked), [checked]);
 
   async function toggle() {
     let newVal = state;
@@ -27,27 +30,22 @@ export function Checkbox({
   return (
     <CheckboxWithLabel {...(props as any)} onClick={toggle}>
       <CheckboxWrapper>
-        <AnimatePresence>
-          {state && (
-            <IconWrapper
-              initial={{
-                translateX: "-50%",
-                translateY: "100%"
+        <IconWrapper state={state}>
+          <motion.svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <motion.path
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              initial={{ d: checkedPath }}
+              animate={{ d: state ? checkedPath : uncheckedPath }}
+              transition={{
+                ease: "easeInOut",
+                duration: .15
               }}
-              animate={{
-                translateX: "-50%",
-                translateY: "-50%"
-              }}
-              exit={{
-                translateX: "-50%",
-                translateY: "-100%"
-              }}
-              transition={{ ease: "easeInOut", duration: 0.13 }}
-            >
-              <CheckedIcon />
-            </IconWrapper>
-          )}
-        </AnimatePresence>
+            />
+          </motion.svg>
+        </IconWrapper>
       </CheckboxWrapper>
       {children && <Label>{children}</Label>}
     </CheckboxWithLabel>
@@ -62,38 +60,39 @@ interface CheckboxProps {
 const CheckboxWithLabel = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.46rem;
+  gap: 0.8rem;
   cursor: pointer;
 `;
 
 const Label = styled.p`
   font-size: 1rem;
   font-weight: 500;
-  color: rgb(${(props) => props.theme.theme});
+  color: rgb(${(props) => props.theme.secondaryText});
   margin: 0;
 `;
 
 const CheckboxWrapper = styled.div`
   position: relative;
-  width: 1.1rem;
-  height: 1.1rem;
-  border-radius: 8px;
-  border: 1px solid rgb(${(props) => props.theme.cardBorder});
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 100%;
   overflow: hidden;
   flex-shrink: 0;
+  background-color: rgba(${props => props.theme.theme}, .15);
 `;
 
-const IconWrapper = styled(motion.div)`
+const IconWrapper = styled(motion.div)<{ state: boolean; }>`
   position: absolute;
   display: flex;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-`;
+  color: rgb(${props => props.state ? props.theme.theme : "255, 0, 0"});
+  transition: color .17s ease;
 
-const CheckedIcon = styled(CheckIcon)`
-  font-size: 1rem;
-  color: rgb(${(props) => props.theme.theme});
-  width: 1.1rem;
-  height: 1.1rem;
+  svg {
+    font-size: 1rem;
+    width: 1.1rem;
+    height: 1.1rem;
+  }
 `;
