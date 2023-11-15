@@ -10,7 +10,6 @@ export function Checkbox({
 }: CheckboxProps & Omit<HTMLProps<HTMLDivElement>, "onChange">) {
   const [state, setState] = useState(checked);
   const checkedPath = "M5.75 12.8665L8.33995 16.4138C9.15171 17.5256 10.8179 17.504 11.6006 16.3715L18.25 6.75";
-  const uncheckedPath = "M17.25 6.75L6.75 17.25 M6.75 6.75L17.25 17.25";
 
   useEffect(() => setState(checked), [checked]);
 
@@ -38,7 +37,7 @@ export function Checkbox({
               strokeLinecap="round"
               strokeLinejoin="round"
               initial={{ d: checkedPath }}
-              animate={{ d: state ? checkedPath : uncheckedPath }}
+              animate={{ d: state ? checkedPath : "" }}
               transition={{
                 ease: "easeInOut",
                 duration: .15
@@ -87,7 +86,7 @@ const IconWrapper = styled(motion.div)<{ state: boolean; }>`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: rgb(${props => props.state ? props.theme.theme : "255, 0, 0"});
+  color: rgb(${props => props.theme.theme});
   transition: color .17s ease;
 
   svg {
