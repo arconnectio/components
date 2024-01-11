@@ -7,12 +7,13 @@ export function Input({
   fullWidth,
   small,
   status = "default",
+  alternative,
   icon,
   ...props
 }: SharedProps & InputProps & HTMLProps<HTMLInputElement>) {
   const inputProps = useMemo<any>(
-    () => ({ fullWidth, small, status, ...props }),
-    [fullWidth, small, status, props]
+    () => ({ fullWidth, small, status, alternative, ...props }),
+    [fullWidth, small, status, alternative, props]
   );
 
   return (
@@ -20,6 +21,7 @@ export function Input({
       {label && <Label>{label}</Label>}
       <InputWrapper
         fullWidth={fullWidth}
+        alternative={alternative}
         small={small}
         status={status ?? "default"}
       >
@@ -40,6 +42,7 @@ export function Input({
 
 export interface SharedProps {
   fullWidth?: boolean;
+  alternative?: boolean;
   small?: boolean;
   status?: InputStatus;
 }
@@ -64,7 +67,9 @@ export const InputWrapper = styled.div<SharedProps>`
       props.status === "default" || !props.status
         ? "rgb(" + props.theme.cardBorder + ")"
         : statusColors[props.status]};
-  border-radius: ${(props) => (props.small ? "14" : "18")}px;
+  border-radius: ${(props) =>
+    props.alternative ? "10" : props.small ? "14" : "18"}px;
+
   overflow: hidden;
   color: rgb(${(props) => props.theme.cardBorder});
   transition: all 0.13s ease-in-out;
@@ -96,11 +101,15 @@ export const Label = styled.p`
 export const side_padding = 1.25;
 export const top_padding = 0.75;
 
-const InputElement = styled.input<SharedProps>`
+export const InputElement = styled.input<SharedProps>`
   outline: none;
   border: none;
-  background-color: transparent;
-  color: rgb(${(props) => props.theme.theme});
+  background-color: ${(props) =>
+    props.alternative ? "rgba(171, 154, 255, 0.15)" : "transparent"};
+  color: rgb(
+    ${(props) => (props.alternative ? "185, 185, 185" : props.theme.theme)}
+  );
+
   font-size: ${(props) => (props.small ? ".9rem" : "1.2rem")};
   font-weight: 500;
   padding: ${({ small }) =>
@@ -109,16 +118,36 @@ const InputElement = styled.input<SharedProps>`
   width: 100%;
   transition: all 0.23s ease-in-out;
 
+  ${(props) =>
+    props.alternative &&
+    props.type === "number" &&
+    `
+    -moz-appearance: textfield; 
+    ::-webkit-inner-spin-button,
+    ::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  `}
   ::-webkit-input-placeholder {
-    color: rgb(${(props) => props.theme.cardBorder});
+    color: rgb(
+      ${(props) =>
+        props.alternative ? "185, 185, 185" : props.theme.cardBorder}
+    );
   }
 
   :-ms-input-placeholder {
-    color: rgb(${(props) => props.theme.cardBorder});
+    color: rgb(
+      ${(props) =>
+        props.alternative ? "185, 185, 185" : props.theme.cardBorder}
+    );
   }
 
   ::placeholder {
-    color: rgb(${(props) => props.theme.cardBorder});
+    color: rgb(
+      ${(props) =>
+        props.alternative ? "185, 185, 185" : props.theme.cardBorder}
+    );
   }
 `;
 
