@@ -48,7 +48,7 @@ export function Provider({
     primaryText: "255, 255, 255",
     secondaryText: "174, 173, 205",
     cardBorder: "44, 44, 47",
-    background: "0, 0, 0",
+    background: "25, 25, 25",
     cardBackground: "22, 22, 22"
   };
 
@@ -95,7 +95,8 @@ const GlobalStyle = createGlobalStyle<{ dark: boolean }>`
   @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
   body {
-    background-color: ${(props) => (props.dark ? "#000" : "#fff")};
+    background-color: ${(props) =>
+      props.dark ? "rgb(25, 25, 25)" : "rgb(255, 255, 255)"};
     color: ${(props) => (props.dark ? "#fff" : "#000")};
     font-family: 'Manrope VF', 'Manrope', sans-serif;
     letter-spacing: .5px;
