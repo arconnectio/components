@@ -5,12 +5,15 @@ export const ButtonV2 = styled.button.attrs<ButtonV2Props>((props) => ({
 }))<ButtonV2Props>`
   display: flex;
   color: ${(props) => 
-    props.theme.displayTheme === "light" && props.secondary 
-    ? "#7866D3" : "#FFFFFF"};
+    props.disabled
+    ? (props.theme.displayTheme === "light" ? "#DDD9F4" : "#A9A4C0")
+    : (props.theme.displayTheme === "light" && props.secondary ? "#7866D3" : "#FFFFFF")};
   background-color: ${(props) =>
-    props.theme.displayTheme === "light" 
+    props.disabled
+    ? (props.theme.displayTheme === "light" ? "#BCB3E9" : "#544A81")
+    : (props.theme.displayTheme === "light" 
     ? (props.secondary ? "transparent" : "#7866D3")
-    : (props.secondary ? "#333333" : "#8E7BEA")};
+    : (props.secondary ? "#333333" : "#8E7BEA"))};
   border: ${(props) => 
     props.theme.displayTheme === "light"
     ? (props.secondary ? "1.5px solid #7866D3" : "none")
@@ -44,7 +47,8 @@ export const ButtonV2 = styled.button.attrs<ButtonV2Props>((props) => ({
 
   &:hover {
     background-color: ${(props) =>
-      props.theme.displayTheme === "light"
+      props.disabled ? "none"
+      : props.theme.displayTheme === "light"
       ? (props.secondary ? "#DDD9F4" : "#5647A0")
       : (props.secondary ? "#36324D" : "#6751D0")};
   };
