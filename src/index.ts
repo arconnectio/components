@@ -3,6 +3,7 @@ export * from "./Button";
 export * from "./Card";
 export * from "./Checkbox";
 export * from "./Input";
+export * from "./InputV2";
 export * from "./Popover";
 export * from "./Provider";
 export * from "./Section";
