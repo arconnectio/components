@@ -1,5 +1,6 @@
 export * from "./hooks";
 export * from "./Button";
+export * from "./ButtonV2";
 export * from "./Card";
 export * from "./Checkbox";
 export * from "./Input";

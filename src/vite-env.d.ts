@@ -12,5 +12,17 @@ declare module "styled-components" {
     background: string;
     cardBorder: string;
     cardBackground: string;
+    backgroundv2: string;
+    primary: string;
+    primaryBtnHover: string;
+    secondaryBtnHover: string;
+    buttonDisabled: string;
+    primaryTextv2: string;
+    secondaryTextv2: string;
+    buttonDisabledText: string;
+    inputField: string;
+    success: string;
+    fail: string;
+    backgroundSecondary: string;
   }
 }
