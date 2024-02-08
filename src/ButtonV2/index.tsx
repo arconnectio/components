@@ -6,18 +6,20 @@ export const ButtonV2 = styled.button.attrs<ButtonV2Props>((props) => ({
   display: flex;
   color: ${(props) => 
     props.disabled
-    ? (props.theme.displayTheme === "light" ? "#DDD9F4" : "#A9A4C0")
-    : (props.theme.displayTheme === "light" && props.secondary ? "#7866D3" : "#FFFFFF")};
+      ? (props.theme.displayTheme === "light" ? props.theme.secondaryBtnHover : props.theme.buttonDisabledText)
+      : (props.theme.displayTheme === "light" 
+        ? (props.secondary
+          ? props.theme.primary
+          : props.theme.backgroundv2)
+        : props.theme.primaryTextv2)};
   background-color: ${(props) =>
     props.disabled
-    ? (props.theme.displayTheme === "light" ? "#BCB3E9" : "#544A81")
+    ? props.theme.buttonDisabled
     : (props.theme.displayTheme === "light" 
-    ? (props.secondary ? "transparent" : "#7866D3")
-    : (props.secondary ? "#333333" : "#8E7BEA"))};
+    ? (props.secondary ? "transparent" : props.theme.primary)
+    : (props.secondary ? props.theme.backgroundSecondary : props.theme.primary))};
   border: ${(props) => 
-    props.theme.displayTheme === "light"
-    ? (props.secondary ? "1.5px solid #7866D3" : "none")
-    : (props.secondary ? "1.5px solid #8E7BEA" : "none")};
+    props.secondary ? "1.5px solid " + props.theme.primary : "none"};
   outline: none;
   cursor: pointer;
   font-size: 16px;
@@ -41,16 +43,12 @@ export const ButtonV2 = styled.button.attrs<ButtonV2Props>((props) => ({
     );
 
   background-color: ${(props) =>
-    props.theme.displayTheme === "light" 
-    ? (props.secondary ? "transparent" : "#7866D3")
-    : (props.secondary ? "transparent" : "#8E7BEA")};
+    props.secondary ? "transparent" : props.theme.primary};
 
   &:hover {
     background-color: ${(props) =>
       props.disabled ? "none"
-      : props.theme.displayTheme === "light"
-      ? (props.secondary ? "#DDD9F4" : "#5647A0")
-      : (props.secondary ? "#36324D" : "#6751D0")};
+      : props.secondary ? props.theme.secondaryBtnHover : props.theme.primaryBtnHover};
   };
 
   &:disabled {
