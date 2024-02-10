@@ -1,26 +1,28 @@
 import { HTMLProps, ReactNode, useMemo } from "react";
-import { InputStatus } from "../hooks";
 import styled from "styled-components";
+import { InputStatus } from "../hooks";
 
 export function InputV2({
+  label,
   fullWidth,
   small,
+  status = "default",
   dropdown,
-  general,
   popup,
   search,
-  status = "default",
-  alternative,
   icon,
+  errorMessage,
+  alternative,
   ...props
 }: SharedPropsV2 & InputV2Props & HTMLProps<HTMLInputElement>) {
   const inputV2Props = useMemo<any>(
-    () => ({ fullWidth, small, dropdown, general, popup, search, status, alternative, ...props }),
-    [fullWidth, small, dropdown, general, popup, search, status, alternative, props]
+    () => ({ fullWidth, small, dropdown, popup, search, status,  alternative, ...props }),
+    [fullWidth, small, dropdown, popup, search, status, alternative, props]
   );
 
   return (
     <>
+      {label && <LabelV2>{label}</LabelV2>}
       <InputV2Wrapper
         fullWidth={fullWidth}
         alternative={alternative}
@@ -38,6 +40,7 @@ export function InputV2({
           </IconWrapperV2>
         )}
       </InputV2Wrapper>
+      {status === "error" && <ErrorMsg>{errorMessage}</ErrorMsg>}
     </>
   );
 }
@@ -47,21 +50,16 @@ export interface SharedPropsV2 {
   alternative?: boolean;
   small?: boolean;
   dropdown?: boolean;
-  general?: boolean;
   popup?: boolean;
   search?: boolean;
-  status?: InputStatus;
+  status?: InputStatus
 }
 
 export interface InputV2Props {
   icon?: ReactNode;
+  label?: ReactNode;
+  errorMessage?: string;
 }
-
-const statusColors = {
-  success: "#14D110",
-  error: "#FF0000",
-  warning: "#FFB800"
-};
 
 export const InputV2Wrapper = styled.div<SharedPropsV2>`
   position: relative;
@@ -69,9 +67,9 @@ export const InputV2Wrapper = styled.div<SharedPropsV2>`
   width: ${(props) => (props.fullWidth ? "calc(100% - 2px)" : "max-content")};
   border: 1.5px solid
     ${(props) =>
-      props.status === "default" || !props.status
-        ? "#847F90"
-        : statusColors[props.status]};
+      props.status === "error"
+        ? props.theme.fail
+        : props.theme.inputField};
   border-radius: 10px;
 
   overflow: hidden;
@@ -79,17 +77,32 @@ export const InputV2Wrapper = styled.div<SharedPropsV2>`
   transition: all 0.13s ease-in-out;
 
   &: hover {
-    border: 1.5px solid #FFFFFF;
+    ${(props) => "border: 1.5px solid " + props.status === "error" ? props.theme.fail : props.theme.primaryTextv2};
   };
 
   &:focus-within,
   &:active {
     border-color: ${(props) =>
-      props.status === "default" || !props.status
-        ? "#FFFFFF"
-        : statusColors[props.status]};
+      props.status === "error"
+        ? props.theme.fail
+        : props.theme.inputField};
     color: rgb(${(props) => props.theme.theme});
   }
+`;
+
+export const LabelV2 = styled.p`
+  font-size:16px;
+  font-weight: 500;
+  color: ${(props) => props.theme.primaryTextv2}
+  margin: 0;
+  margin-bottom: 8px;
+`;
+
+export const ErrorMsg = styled.p`
+  color: ${(props) => props.theme.fail};
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
 `;
 
 export const InputV2Element = styled.input<SharedPropsV2>`
@@ -97,9 +110,7 @@ export const InputV2Element = styled.input<SharedPropsV2>`
   border: none;
   background-color: ${(props) =>
     props.alternative ? "rgba(171, 154, 255, 0.15)" : "transparent"};
-  color: rgb(
-    ${(props) => (props.alternative ? "185, 185, 185" : props.theme.theme)}
-  );
+  color: ${(props) => props.theme.primaryTextv2};
 
   font-size: 16px;
   font-weight: 500;
@@ -122,33 +133,33 @@ export const InputV2Element = styled.input<SharedPropsV2>`
   ::-webkit-input-placeholder {
     color: rgb(
       ${(props) =>
-        props.alternative ? "185, 185, 185" : "#847F90"}
+        props.alternative ? "185, 185, 185" : props.theme.inputField}
     );
   }
 
   :-ms-input-placeholder {
     color: rgb(
       ${(props) =>
-        props.alternative ? "185, 185, 185" : "#847F90"}
+        props.alternative ? "185, 185, 185" : props.theme.inputField}
     );
   }
 
   ::placeholder {
     color: rgb(
       ${(props) =>
-        props.alternative ? "185, 185, 185" : "#847F90"}
+        props.alternative ? "185, 185, 185" : props.theme.inputField}
     );
   }
 `;
 
 export const IconWrapperV2 = styled.div<SharedPropsV2>`
   position: absolute;
-  display: flex;
   width: 22px;
   height: 22px;
   z-index: 10;
-  font-size: 1.2rem;
+  font-size: 16px;
   top: 50%;
-  right: 1.25rem;
+  right: 15px;
   transform: translateY(-50%);
+  color: ${(props) => props.theme.primaryTextv2};
 `;

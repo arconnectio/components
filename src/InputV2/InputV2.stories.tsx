@@ -18,14 +18,15 @@ const Template: ComponentStory<typeof InputV2> = (args) => {
 };
 
 const defaultArgs: ComponentProps<typeof InputV2> = {
-  fullWidth: false,
   small: false,
+  fullWidth: false,
   dropdown: false,
-  general: false,
   popup: false,
   search: false,
   status: "default",
+  errorMessage: "Error: payment method not accepted",
   placeholder: "Select an option",
+  label: "Label"
 };
 
 const inputIcon = ({ 
