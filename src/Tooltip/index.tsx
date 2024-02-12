@@ -72,7 +72,7 @@ const TooltipElement = styled(motion.div)<{ position: Position }>`
   justify-content: center;
   padding: 10px 15px;
   gap: 0px 10px;
-  border-radius: 7px;
+  border-radius: 10px;
   font-size: 14px;
   font-weight: 500;
   color: #FFFFFF;
