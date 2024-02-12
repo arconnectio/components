@@ -67,12 +67,12 @@ const TooltipWrapper = styled.div<{ underline?: boolean }>`
 
 const TooltipElement = styled(motion.div)<{ position: Position }>`
   position: absolute;
-  padding: 0.37rem 0.58rem;
+  padding: 10px 15px;
   border-radius: 7px;
-  font-size: 0.86rem;
+  font-size: 14px;
   font-weight: 600;
-  color: #eaeaea;
-  background-color: #18191c;
+  color: #FFFFFF;
+  background-color: ${(props) => props.theme.backgroundSecondary};
   z-index: 100;
   width: max-content;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
@@ -82,13 +82,13 @@ const TooltipElement = styled(motion.div)<{ position: Position }>`
     content: "";
     border: 4px solid;
     border-color: ${(props) =>
-        props.position.startsWith("top") ? "#18191C" : "transparent"}
+        props.position.startsWith("top") ? props.theme.backgroundSecondary : "transparent"}
       ${(props) =>
-        props.position.startsWith("right") ? "#18191C" : "transparent"}
+        props.position.startsWith("right") ? props.theme.backgroundSecondary : "transparent"}
       ${(props) =>
-        props.position.startsWith("bottom") ? "#18191C" : "transparent"}
+        props.position.startsWith("bottom") ? props.theme.backgroundSecondary : "transparent"}
       ${(props) =>
-        props.position.startsWith("left") ? "#18191C" : "transparent"};
+        props.position.startsWith("left") ? props.theme.backgroundSecondary : "transparent"};
     ${(props) => getArrowPosition(props.position)}
   }
 `;
