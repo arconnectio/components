@@ -67,14 +67,20 @@ const TooltipWrapper = styled.div<{ underline?: boolean }>`
 
 const TooltipElement = styled(motion.div)<{ position: Position }>`
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px 15px;
+  gap: 0px 10px;
   border-radius: 7px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   color: #FFFFFF;
   background-color: ${(props) => props.theme.backgroundSecondary};
   z-index: 100;
   width: max-content;
+  min-width: 139px;
+
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
 
   &::after {
