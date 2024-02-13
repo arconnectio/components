@@ -77,7 +77,7 @@ export const InputV2Wrapper = styled.div<SharedPropsV2>`
   transition: all 0.13s ease-in-out;
 
   &: hover {
-    ${(props) => "border: 1.5px solid " + props.status === "error" ? props.theme.fail : props.theme.primaryTextv2};
+    ${(props) => "border: 1.5px solid " + (props.status === "error" ? props.theme.fail : props.theme.primaryTextv2)};
   };
 
   &:focus-within,
