@@ -76,11 +76,11 @@ export const InputV2Wrapper = styled.div<SharedPropsV2>`
   color: rgb(${(props) => props.theme.cardBorder});
   transition: all 0.13s ease-in-out;
 
+  &:focus-within,
   &: hover {
     ${(props) => "border: 1.5px solid " + (props.status === "error" ? props.theme.fail : props.theme.primaryTextv2)};
   };
-
-  &:focus-within,
+  
   &:active {
     border-color: ${(props) =>
       props.status === "error"
