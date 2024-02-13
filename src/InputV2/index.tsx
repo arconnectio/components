@@ -115,7 +115,8 @@ export const InputV2Element = styled.input<SharedPropsV2>`
   font-size: 16px;
   font-weight: 500;
   padding: ${(props) => 
-    props.small ? "10px 15px" : "15px"};
+    props.small ? "8.5px 15px" : "13.5px 15px"};
+  line-height: 22px;
   width: 100%;
   transition: all 0.23s ease-in-out;
 
