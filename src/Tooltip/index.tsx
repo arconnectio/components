@@ -80,6 +80,7 @@ const TooltipElement = styled(motion.div)<{ position: Position }>`
   z-index: 100;
   width: max-content;
   min-width: 139px;
+  line-height: 19px;
 
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
 
