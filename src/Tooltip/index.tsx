@@ -79,7 +79,7 @@ const TooltipElement = styled(motion.div)<{ position: Position }>`
   background-color: ${(props) => props.theme.backgroundSecondary};
   z-index: 100;
   width: max-content;
-  min-width: 139px;
+  min-width: 109px;
   line-height: 19px;
 
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
