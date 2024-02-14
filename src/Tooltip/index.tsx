@@ -87,7 +87,7 @@ const TooltipElement = styled(motion.div)<{ position: Position }>`
   &::after {
     position: absolute;
     content: "";
-    border: 4px solid;
+    border: 7.5px solid;
     border-color: ${(props) =>
         props.position.startsWith("top") ? props.theme.backgroundSecondary : "transparent"}
       ${(props) =>

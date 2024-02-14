@@ -38,10 +38,10 @@ export function getPosition(position: Position): TooltipPosition {
     },
     bottomStart: {
       top: "125%",
-      left: "50%"
+      left: "0"
     },
     bottomEnd: {
-      top: "112%",
+      top: "125%",
       right: "0"
     },
     left: {
@@ -72,22 +72,22 @@ export function getArrowPosition(position: Position) {
     style += "right";
   }
 
-  style += ": -8px;\n";
+  style += ": -15px;\n";
 
   if (position.startsWith("top") || position.startsWith("bottom")) {
     if (position.includes("Start")) {
-      style += "left: 10px;";
+      style += "left: 15px;";
     } else if (position.includes("End")) {
-      style += "right: 10px;";
+      style += "right: 15px;";
     } else {
       style += "left: 50%;\n";
       style += "transform: translate(-50%, 0);";
     }
   } else {
     if (position.includes("Start")) {
-      style += "top: 8px;";
+      style += "top: 15px;";
     } else if (position.includes("End")) {
-      style += "bottom: 8px;";
+      style += "bottom: 15px;";
     } else {
       style += "top: 50%;\n";
       style += "transform: translate(0, -50%);";
