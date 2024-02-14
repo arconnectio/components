@@ -4,6 +4,7 @@ export * from "./ButtonV2";
 export * from "./Card";
 export * from "./Checkbox";
 export * from "./Input";
+export * from "./ListItem";
 export * from "./Popover";
 export * from "./Provider";
 export * from "./Section";
