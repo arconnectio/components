@@ -7,17 +7,17 @@ export function InputV2({
   fullWidth,
   small,
   status = "default",
+  disabled,
   dropdown,
   popup,
   search,
   icon,
   errorMessage,
-  alternative,
   ...props
 }: SharedPropsV2 & InputV2Props & HTMLProps<HTMLInputElement>) {
   const inputV2Props = useMemo<any>(
-    () => ({ fullWidth, small, dropdown, popup, search, status,  alternative, ...props }),
-    [fullWidth, small, dropdown, popup, search, status, alternative, props]
+    () => ({ fullWidth, small, dropdown, popup, search, status, disabled, ...props }),
+    [fullWidth, small, dropdown, popup, search, status, disabled, props]
   );
 
   return (
@@ -25,11 +25,10 @@ export function InputV2({
       {label && <LabelV2>{label}</LabelV2>}
       <InputV2Wrapper
         fullWidth={fullWidth}
-        alternative={alternative}
         small={small}
         status={status ?? "default"}
       >
-        <InputV2Element {...inputV2Props} />
+        <InputV2Element {...inputV2Props} disabled={disabled} />
         {icon && (
           <IconWrapperV2
             fullWidth={fullWidth}
@@ -47,12 +46,12 @@ export function InputV2({
 
 export interface SharedPropsV2 {
   fullWidth?: boolean;
-  alternative?: boolean;
   small?: boolean;
   dropdown?: boolean;
   popup?: boolean;
   search?: boolean;
-  status?: InputStatus
+  status?: InputStatus;
+  disabled?: boolean;
 }
 
 export interface InputV2Props {
@@ -108,8 +107,7 @@ export const ErrorMsg = styled.p`
 export const InputV2Element = styled.input<SharedPropsV2>`
   outline: none;
   border: none;
-  background-color: ${(props) =>
-    props.alternative ? "rgba(171, 154, 255, 0.15)" : "transparent"};
+  background-color: transparent;
   color: ${(props) => props.theme.primaryTextv2};
 
   font-size: 16px;
@@ -120,36 +118,17 @@ export const InputV2Element = styled.input<SharedPropsV2>`
   width: 100%;
   transition: all 0.23s ease-in-out;
 
-  ${(props) =>
-    props.alternative &&
-    props.type === "number" &&
-    `
-    -moz-appearance: textfield; 
-    ::-webkit-inner-spin-button,
-    ::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-  `}
   ::-webkit-input-placeholder {
     color: rgb(
-      ${(props) =>
-        props.alternative ? "185, 185, 185" : props.theme.inputField}
-    );
+      ${(props) => props.theme.inputField});
   }
 
   :-ms-input-placeholder {
-    color: rgb(
-      ${(props) =>
-        props.alternative ? "185, 185, 185" : props.theme.inputField}
-    );
+    color: rgb(${(props) => props.theme.inputField});
   }
 
   ::placeholder {
-    color: rgb(
-      ${(props) =>
-        props.alternative ? "185, 185, 185" : props.theme.inputField}
-    );
+    color: rgb(${(props) => props.theme.inputField});
   }
 `;
 
@@ -163,4 +142,5 @@ export const IconWrapperV2 = styled.div<SharedPropsV2>`
   right: 15px;
   transform: translateY(-50%);
   color: ${(props) => props.theme.primaryTextv2};
+  cursor: pointer;
 `;

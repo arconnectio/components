@@ -24,6 +24,7 @@ const defaultArgs: ComponentProps<typeof InputV2> = {
   popup: false,
   search: false,
   status: "default",
+  disabled: false,
   errorMessage: "Error: payment method not accepted",
   placeholder: "Select an option",
   label: "Label"
@@ -46,8 +47,5 @@ const inputIcon = ({
 
 export const Basic = Template.bind({});
 Basic.args = {
-  ...defaultArgs,
-  dropdown: false,
-  popup: false,
-  search: false
+  ...defaultArgs
 };
