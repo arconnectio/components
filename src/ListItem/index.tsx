@@ -1,5 +1,9 @@
+import type { DragControls } from "framer-motion";
+import { SettingsIcon } from "@iconicicons/react";
 import { HTMLProps, ReactNode } from "react";
+import ReorderIcon from "../ReorderIcon";
 import styled from "styled-components";
+import Squircle from "../Squircle";
 import { Text } from "../Text";
 
 export function ListItem({
@@ -10,6 +14,7 @@ export function ListItem({
   title,
   description,
   img,
+  dragControls,
   ...props
 }: Props & HTMLProps<HTMLDivElement>) {
   return (
@@ -21,6 +26,7 @@ export function ListItem({
           <ItemDescription>{description}</ItemDescription>
         </div>
       </ContentWrapper>
+      {dragControls && <ReorderIcon dragControls={dragControls} />}
     </Wrapper>
   );
 }
@@ -32,6 +38,7 @@ const Wrapper = styled.div<{ active: boolean }>`
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
+  padding: 15px;
 `;
 
 const ContentWrapper = styled.div`
@@ -40,7 +47,11 @@ const ContentWrapper = styled.div`
 `;
 
 const IconWrapper = styled(Squircle)`
-
+  position: relative;
+  flex-shrink: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  color: rgb(${(props) => props.theme.theme});
 `;
 
 const ItemName = styled(Text).attrs({
@@ -61,6 +72,17 @@ const ItemDescription = styled(Text).attrs({
   font-size: 0.82rem;
 `;
 
+export const ListItemIcon = styled(SettingsIcon)`
+  position: absolute;
+  font-size: 1.5rem;
+  width: 1em;
+  height: 1em;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
 interface Props {
   web?: boolean;
   extension?: boolean;
@@ -68,4 +90,5 @@ interface Props {
   title: string | ReactNode;
   description: string | ReactNode;
   img?: string;
+  dragControls?: DragControls;
 };
