@@ -51,7 +51,7 @@ const ModalWrapper = styled(motion.div).attrs({
   align-items: flex-start;
   justify-content: center;
   z-index: 11000;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(19, 19, 19, 0.5);
   top: 0;
   left: 0;
   right: 0;
