@@ -1,5 +1,5 @@
 import type { DragControls } from "framer-motion";
-import { SettingsIcon } from "@iconicicons/react";
+import { UsersPlusIcon } from "@iconicicons/react";
 import { HTMLProps, ReactNode } from "react";
 import ReorderIcon from "../ReorderIcon";
 import styled from "styled-components";
@@ -81,11 +81,11 @@ const ItemDescription = styled(Text).attrs({
   font-weight: 500;
 `;
 
-export const ListItemIcon = styled(SettingsIcon)`
+export const ListItemIcon = styled(UsersPlusIcon)`
   position: absolute;
   font-size: 1.5rem;
-  width: 37px;
-  height: 37px;
+  width: 1em;
+  height: 1em;
   color: #fff;
   top: 50%;
   left: 50%;
