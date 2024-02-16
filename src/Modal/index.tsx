@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { PropsWithChildren, ReactNode } from "react";
-import { Card } from "../Card";
 import styled from "styled-components";
 import ReactDOM from "react-dom";
 
@@ -52,7 +51,7 @@ const ModalWrapper = styled(motion.div).attrs({
   align-items: flex-start;
   justify-content: center;
   z-index: 11000;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(19, 19, 19, 0.5);
   top: 0;
   left: 0;
   right: 0;
@@ -62,47 +61,33 @@ const ModalWrapper = styled(motion.div).attrs({
   padding: 2rem 0;
 `;
 
-const ModalCard = styled(Card)`
-  padding: 0;
-  background-color: rgb(${(props) => props.theme.background});
-  max-width: 47%;
-  min-width: 30%;
-  overflow: hidden;
+const ModalCard = styled.div`
+  background-color: ${(props) => props.theme.backgroundSecondary};
+  outline: 1px solid #7866D3;
+  border-radius: 10px;
+  width: 300px;
+  height: 200px;
   margin: auto;
-
-  @media screen and (max-width: 720px) {
-    max-width: 94vw;
-  }
+  padding: 24px 30px;
+  box-sizing: border-box;
+  gap: 16px;
 `;
 
 const ModalContent = styled.div`
-  padding: 1rem;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  color: #FFFFFF;
+  line-height: 25px;
+  align-self: stretch;
 `;
 
 const ModalActions = styled.div`
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: stretch;
-`;
-
-export const ModalButton = styled.button`
-  outline: none;
-  border: none;
-  border-top: 1px solid rgb(${(props) => props.theme.cardBorder});
-  background-color: transparent;
-  text-align: center;
-  width: 100%;
-  padding: 1rem 0;
-  color: rgb(${(props) => props.theme.secondaryText});
-  background-color: transparent;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.23s ease-in-out;
-
-  &:hover {
-    background-color: rgba(${(props) => props.theme.cardBorder}, 0.35);
-  }
+  align-self: stretch;
+  gap: 10px;
 `;
 
 interface ModalProps {
