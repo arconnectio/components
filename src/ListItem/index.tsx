@@ -8,8 +8,7 @@ import { Text } from "../Text";
 
 export function ListItem({
   children,
-  web,
-  extension,
+  small = false,
   active,
   title,
   description,
@@ -18,12 +17,12 @@ export function ListItem({
   ...props
 }: Props & HTMLProps<HTMLDivElement>) {
   return (
-    <Wrapper active={active} {...(props as any)}>
-      <ContentWrapper>
-        <IconWrapper img={img}>{children}</IconWrapper>
+    <Wrapper small={small} active={active} {...(props as any)}>
+      <ContentWrapper small={small}>
+        <IconWrapper small={small} img={img}>{children}</IconWrapper>
         <div>
-          <ItemName>{title}</ItemName>
-          <ItemDescription>{description}</ItemDescription>
+          <ItemName small={small}>{title}</ItemName>
+          <ItemDescription small={small}>{description}</ItemDescription>
         </div>
       </ContentWrapper>
       {dragControls && <ReorderIcon dragControls={dragControls} />}
@@ -31,35 +30,42 @@ export function ListItem({
   );
 }
 
-const Wrapper = styled.div<{ active: boolean }>`
+const Wrapper = styled.div<{ active: boolean, small: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 20px;
+  border-radius: ${(props) => props.small ? "10px" : "20px"};
   overflow: hidden;
   cursor: pointer;
-  padding: 15px;
+  padding: ${(props) => props.small ? "10px" : "15px"};
+  background-color: ${(props) => props.active ? props.theme.secondaryBtnHover : "transparent"};
+  transition: all 0.23s ease-in-out;
+
+  &:hover {
+    background-color: ${(props) => props.theme.secondaryBtnHover};
+  }
 `;
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.div<{ small: boolean }>`
   display: flex;
   align-items: center;
+  gap: ${(props) => props.small ? "12px" : "17px"};
 `;
 
-const IconWrapper = styled(Squircle)`
+const IconWrapper = styled(Squircle)<{ small: boolean }>`
   position: relative;
   flex-shrink: 0;
-  width: 2.6rem;
-  height: 2.6rem;
+  width: ${(props) => props.small ? "32px" : "48px"};
+  height: ${(props) => props.small ? "32px" : "48px"};
   color: rgb(${(props) => props.theme.theme});
 `;
 
 const ItemName = styled(Text).attrs({
   noMargin: true,
   heading: true
-})`
-  font-weight: 500;
-  font-size: 1.2rem;
+})<{ small: boolean }>`
+  font-weight: ${(props) => props.small ? "500" : "600"}
+  font-size: ${(props) => props.small ? "16px" : "20px"}
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -68,15 +74,16 @@ const ItemName = styled(Text).attrs({
 
 const ItemDescription = styled(Text).attrs({
   noMargin: true
-})`
-  font-size: 0.82rem;
+})<{ small: boolean }>`
+  font-size: ${(props) => props.small ? "10px" : "14px"}
+  font-weight: 500;
 `;
 
 export const ListItemIcon = styled(SettingsIcon)`
   position: absolute;
   font-size: 1.5rem;
-  width: 1em;
-  height: 1em;
+  width: 1.3em;
+  height: 1.3em;
   color: #fff;
   top: 50%;
   left: 50%;
@@ -84,8 +91,7 @@ export const ListItemIcon = styled(SettingsIcon)`
 `;
 
 interface Props {
-  web?: boolean;
-  extension?: boolean;
+  small?: boolean;
   active?: boolean;
   title: string | ReactNode;
   description: string | ReactNode;

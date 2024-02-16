@@ -13,8 +13,7 @@ const Template: ComponentStory<typeof ListItem> = (args) => (
     </ListItem>
 );
 const defaultArgs: ComponentProps<typeof ListItem> = {
-  web: true,
-  extension: false,
+  small: false,
   active: false,
   title: "Contacts",
   description: "Add/edit contacts",
