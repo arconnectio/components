@@ -38,12 +38,13 @@ const Wrapper = styled.div<{ active: boolean, small: boolean }>`
   overflow: hidden;
   cursor: pointer;
   padding: ${(props) => props.small ? "10px" : "15px"};
+  height: ${(props) => props.small ? "36px" : "48px"};
   background-color: ${(props) => props.active ? props.theme.secondaryBtnHover : "transparent"};
   transition: all 0.23s ease-in-out;
 
   &:hover {
-    background-color: ${(props) => props.theme.secondaryBtnHover};
-  }
+    background-color: ${(props) => props.theme.secondaryItemHover};
+  };
 `;
 
 const ContentWrapper = styled.div<{ small: boolean }>`
@@ -64,8 +65,8 @@ const ItemName = styled(Text).attrs({
   noMargin: true,
   heading: true
 })<{ small: boolean }>`
-  font-weight: ${(props) => props.small ? "500" : "600"}
-  font-size: ${(props) => props.small ? "16px" : "20px"}
+  font-weight: ${(props) => props.small ? "500" : "600"};
+  font-size: ${(props) => props.small ? "16px" : "20px"};
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -75,15 +76,15 @@ const ItemName = styled(Text).attrs({
 const ItemDescription = styled(Text).attrs({
   noMargin: true
 })<{ small: boolean }>`
-  font-size: ${(props) => props.small ? "10px" : "14px"}
+  font-size: ${(props) => props.small ? "10px" : "14px"};
   font-weight: 500;
 `;
 
 export const ListItemIcon = styled(SettingsIcon)`
   position: absolute;
   font-size: 1.5rem;
-  width: 1.3em;
-  height: 1.3em;
+  width: 37px;
+  height: 37px;
   color: #fff;
   top: 50%;
   left: 50%;

@@ -22,3 +22,12 @@ const defaultArgs: ComponentProps<typeof ListItem> = {
 
 export const Basic = Template.bind({});
 Basic.args = defaultArgs;
+
+export const Small = Template.bind({});
+Small.args = {
+  ...defaultArgs,
+  small: true,
+  active: false,
+  title: "USD",
+  description: "United States Dollar"
+};
