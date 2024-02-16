@@ -43,7 +43,7 @@ const Wrapper = styled.div<{ active: boolean, small: boolean }>`
   transition: all 0.23s ease-in-out;
 
   &:hover {
-    background-color: ${(props) => props.theme.secondaryItemHover};
+    background-color: ${(props) => !props.active ? props.theme.secondaryItemHover : "none"};
   };
 `;
 
@@ -71,6 +71,7 @@ const ItemName = styled(Text).attrs({
   text-overflow: ellipsis;
   overflow: hidden;
   max-width: 250px;
+  color: ${(props) => props.theme.primaryTextv2};
 `;
 
 const ItemDescription = styled(Text).attrs({
