@@ -23,14 +23,22 @@ export default function Squircle({
         return setImageData(img);
       }
 
-      const { data, headers } = await axios.get(img, {
-        responseType: "arraybuffer"
-      });
-      const base64 = Buffer.from(data, "binary").toString("base64");
-      const prefix = "data:" + headers["content-type"] + ";base64, ";
-
-      // append the base64 image string
-      setImageData(prefix + base64);
+      try {
+        const response = await axios.get(img, { responseType: "blob" });
+        const blob = response.data;
+  
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const base64data = reader.result;
+          if (typeof base64data === "string") {
+            setImageData(base64data);
+          }
+        };
+        reader.readAsDataURL(blob);
+      } catch (error) {
+        console.error("Error loading image:", error);
+        setImageData(undefined);
+      }
     })();
   }, [img]);
 
