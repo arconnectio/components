@@ -9,7 +9,7 @@ export default {
 
 const Template: ComponentStory<typeof ListItem> = (args) => (
     <ListItem {...args}>
-      <ListItemIcon />
+      {!args.img && <ListItemIcon />}
     </ListItem>
 );
 const defaultArgs: ComponentProps<typeof ListItem> = {
@@ -19,7 +19,7 @@ const defaultArgs: ComponentProps<typeof ListItem> = {
   description: "Add/edit contacts",
   dragControls: undefined
 };
-
+ 
 export const Basic = Template.bind({});
 Basic.args = defaultArgs;
 

@@ -7,7 +7,7 @@ import Squircle from "../Squircle";
 import { Text } from "../Text";
 
 export function ListItem({
-  children,
+  children, 
   small = false,
   active,
   title,
@@ -19,7 +19,9 @@ export function ListItem({
   return (
     <Wrapper small={small} active={active} {...(props as any)}>
       <ContentWrapper small={small}>
-        <IconWrapper small={small} img={img}>{children}</IconWrapper>
+        <IconWrapper small={small} img={img}>
+          {children}
+        </IconWrapper>
         <div>
           <ItemName small={small}>{title}</ItemName>
           <ItemDescription small={small}>{description}</ItemDescription>
@@ -89,6 +91,18 @@ export const ListItemIcon = styled(UsersPlusIcon)`
   color: #fff;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+export const ListItemImg = styled.img.attrs({
+  alt: "icon",
+  draggable: false
+})`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.5rem;
+  user-select: none;
   transform: translate(-50%, -50%);
 `;
 
