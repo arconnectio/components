@@ -5,6 +5,7 @@ export * from "./Card";
 export * from "./Checkbox";
 export * from "./Input";
 export * from "./InputV2";
+export * from "./ListItem";
 export * from "./Popover";
 export * from "./Provider";
 export * from "./Section";
