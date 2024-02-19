@@ -7,9 +7,9 @@
   },
   "type": "module",
   "scripts": {
-    "build": "tsc && vite build",
-    "storybook": "start-storybook -p 6006",
-    "fmt": "prettier . --write"
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public",
+    "serve-storybook": "serve storybook-static"
   },
   "files": [
     "dist"
