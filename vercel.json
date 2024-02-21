@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "NODE_OPTIONS=--openssl-legacy-provider yarn build-storybook",
+  "devCommand": "NODE_OPTIONS=--openssl-legacy-provider yarn storybook",
+  "installCommand": "yarn",
+  "framework": null,
+  "outputDirectory": "./storybook-static"
+}

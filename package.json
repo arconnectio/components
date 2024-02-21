@@ -8,8 +8,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc && vite build",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
+    "storybook": "start-storybook -p 6006 -s assets",
+    "build-storybook": "build-storybook -s assets",
     "serve-storybook": "serve storybook-static",
     "fmt": "prettier . --write"
   },
