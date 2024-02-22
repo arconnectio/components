@@ -8,13 +8,14 @@ export function Modal({
   open,
   setOpen,
   actions,
+  announcement,
   root
 }: PropsWithChildren<ModalProps>) {
   return ReactDOM.createPortal(
     <AnimatePresence>
       {open && (
         <ModalWrapper onClick={() => setOpen(false)}>
-          <ModalCard onClick={(e) => e.stopPropagation()}>
+          <ModalCard announcement={announcement} onClick={(e) => e.stopPropagation()}>
             <ModalContent>{children}</ModalContent>
             {actions && <ModalActions>{actions}</ModalActions>}
           </ModalCard>
@@ -61,12 +62,12 @@ const ModalWrapper = styled(motion.div).attrs({
   padding: 2rem 0;
 `;
 
-const ModalCard = styled.div`
+const ModalCard = styled.div<{ announcement?: boolean }>`
   background-color: ${(props) => props.theme.backgroundSecondary};
   outline: 1px solid #7866D3;
   border-radius: 10px;
   width: 300px;
-  height: 200px;
+  height: ${(props) => props.announcement ? "364px" : "200px"};
   margin: auto;
   padding: 24px 30px;
   box-sizing: border-box;
@@ -94,5 +95,6 @@ interface ModalProps {
   open: boolean;
   setOpen: (open: boolean) => any;
   actions?: ReactNode;
+  announcement?: boolean;
   root?: Element | DocumentFragment;
 }
