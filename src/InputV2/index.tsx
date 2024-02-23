@@ -1,3 +1,4 @@
+import { ChevronDownIcon, ChevronRightIcon, SearchIcon } from "@iconicicons/react";
 import { HTMLProps, ReactNode, useMemo } from "react";
 import styled from "styled-components";
 import { InputStatus } from "../hooks";
@@ -20,6 +21,23 @@ export function InputV2({
     [fullWidth, small, dropdown, popup, search, status, disabled, props]
   );
 
+  const inputIcon = ({ 
+    dropdown, 
+    popup, 
+    search 
+  }: {
+    dropdown?: boolean;
+    popup?: boolean;
+    search?: boolean;
+  }) => {
+    if (dropdown) return <ChevronDownIcon />;
+    if (popup) return <ChevronRightIcon />;
+    if (search) return <SearchIcon />;
+    return null;
+  }
+
+  const IconComponent = inputIcon({ dropdown, popup, search });
+
   return (
     <>
       {label && <LabelV2>{label}</LabelV2>}
@@ -29,13 +47,13 @@ export function InputV2({
         status={status ?? "default"}
       >
         <InputV2Element {...inputV2Props} disabled={disabled} />
-        {icon && (
+        {IconComponent && (
           <IconWrapperV2
             fullWidth={fullWidth}
             small={small}
             status={status ?? "default"}
           >
-            {icon}
+            {IconComponent}
           </IconWrapperV2>
         )}
       </InputV2Wrapper>
