@@ -10,7 +10,9 @@ export default {
 
 const Template: ComponentStory<typeof Tooltip> = (args) => (
   <Wrapper>
-    <Tooltip {...args}>Hover this</Tooltip>
+    <Tooltip {...args}>
+      <div style={{ cursor: "pointer" }}>Hover this</div>
+      </Tooltip>
   </Wrapper>
 );
 const defaultArgs: ComponentProps<typeof Tooltip> = {
