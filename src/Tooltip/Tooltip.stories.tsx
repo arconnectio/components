@@ -1,7 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import styled from "styled-components";
 import { ComponentProps } from "react";
-import { Tooltip } from "./index";
+import { Tooltip } from ".";
 
 export default {
   title: "Tooltip",
@@ -9,9 +8,7 @@ export default {
 } as ComponentMeta<typeof Tooltip>;
 
 const Template: ComponentStory<typeof Tooltip> = (args) => (
-  <Wrapper>
-    <Tooltip {...args}>Hover this</Tooltip>
-  </Wrapper>
+  <Tooltip {...args}>Hover this</Tooltip>
 );
 const defaultArgs: ComponentProps<typeof Tooltip> = {
   position: "bottom",
@@ -20,11 +17,3 @@ const defaultArgs: ComponentProps<typeof Tooltip> = {
 
 export const Basic = Template.bind({});
 Basic.args = defaultArgs;
-
-const Wrapper = styled.div`
-  width: 100%;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: end;
-`;

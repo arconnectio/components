@@ -12,9 +12,11 @@ export * from "./Section";
 export * from "./Select";
 export * from "./Text";
 export * from "./Tooltip";
+export * from "./TooltipV2";
 export * from "./Spacer";
 export * from "./FileInput";
 export * from "./Loading";
 export * from "./Modal";
+export * from "./ModalV2";
 
 export { useToasts } from "./Toast/utils";
