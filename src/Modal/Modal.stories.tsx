@@ -1,9 +1,9 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Spacer } from "../Spacer";
-import { ButtonV2 } from "../ButtonV2";
+import { Button } from "../Button";
 import { useModal } from "../hooks";
 
-import { Modal } from "./index";
+import { Modal, ModalButton } from "./index";
 
 export default {
   title: "Modal",
@@ -15,8 +15,14 @@ export const Basic: ComponentStory<typeof Modal> = (args) => (
     {...args}
     open={true}
     setOpen={() => {}}
+    actions={
+      <>
+        <ModalButton>Ok</ModalButton>
+        <ModalButton>Cancel</ModalButton>
+      </>
+    }
   >
-    <p>Pop up notification text goes here</p>
+    <p>This is a test</p>
     <Spacer y={200} />
   </Modal>
 );
@@ -26,17 +32,16 @@ export const Demo = () => {
 
   return (
     <>
-      <ButtonV2 onClick={() => modal.setOpen(true)}>Show modal</ButtonV2>
+      <Button onClick={() => modal.setOpen(true)}>Show modal</Button>
       <Modal
         {...modal.bindings}
         actions={
           <>
-            <ButtonV2 secondary onClick={() => modal.setOpen(false)}>No</ButtonV2>
-            <ButtonV2 onClick={() => modal.setOpen(false)}>Yes</ButtonV2>
+            <ModalButton onClick={() => modal.setOpen(false)}>Ok</ModalButton>
           </>
         }
       >
-        <p>Pop up notification text goes here</p>
+        <p>This is a test modal demo</p>
       </Modal>
     </>
   );
