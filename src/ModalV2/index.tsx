@@ -63,7 +63,7 @@ const ModalWrapper = styled(motion.div).attrs({
 `;
 
 const ModalCard = styled.div<{ announcement?: boolean }>`
-  background-color: ${(props) => props.theme.backgroundSecondary};
+  background-color: ${(props) => props.theme.displayTheme === "light" ? props.theme.backgroundv2 : props.theme.backgroundSecondary};
   outline: 1px solid #7866D3;
   border-radius: 10px;
   width: 300px;
@@ -78,7 +78,7 @@ const ModalContent = styled.div`
   font-size: 18px;
   font-weight: 600;
   text-align: center;
-  color: #FFFFFF;
+  color: ${(props) => props.theme.primaryTextv2};
   line-height: 25px;
   align-self: stretch;
 `;
