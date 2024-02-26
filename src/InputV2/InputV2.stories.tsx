@@ -1,6 +1,4 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { ChevronDownIcon, ChevronRightIcon, SearchIcon } from "@iconicicons/react";
-
 import { InputV2 } from "./index";
 import { ComponentProps } from "react";
 
@@ -10,10 +8,8 @@ export default {
 } as ComponentMeta<typeof InputV2>;
 
 const Template: ComponentStory<typeof InputV2> = (args) => {
-  const IconComponent = inputIcon(args);
-
   return (
-    <InputV2 type="text" {...args} icon={IconComponent} />
+    <InputV2 type="text" {...args} />
   );
 };
 
@@ -29,21 +25,6 @@ const defaultArgs: ComponentProps<typeof InputV2> = {
   placeholder: "Select an option",
   label: "Label"
 };
-
-const inputIcon = ({ 
-    dropdown, 
-    popup, 
-    search 
-  }: {
-    dropdown?: boolean;
-    popup?: boolean;
-    search?: boolean;
-  }) => {
-  if (dropdown) return <ChevronDownIcon />;
-  if (popup) return <ChevronRightIcon />;
-  if (search) return <SearchIcon />;
-  return null;
-}
 
 export const Basic = Template.bind({});
 Basic.args = {
