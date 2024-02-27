@@ -1,13 +1,12 @@
 import {
     IconWrapperV2,
-    InputV2Props,
     InputV2Wrapper,
-    LabelV2,
-    SharedPropsV2
+    LabelV2
   } from "../InputV2";
-  import { HTMLProps, PropsWithChildren, useMemo, useState } from "react";
+  import { HTMLProps, PropsWithChildren, ReactNode, useMemo } from "react";
   import { ChevronDownIcon } from "@iconicicons/react";
   import styled from "styled-components";
+import { InputStatus } from "../hooks";
   
   export function SelectV2({
     children,
@@ -16,7 +15,7 @@ import {
     small,
     status = "default",
     ...props
-  }: PropsWithChildren<SharedPropsV2 & InputV2Props & HTMLProps<HTMLSelectElement>>) {
+  }: PropsWithChildren<SelectV2Props & HTMLProps<HTMLSelectElement>>) {
     const selectPropsV2 = useMemo<any>(
       () => ({ fullWidth, small, status, ...props }),
       [fullWidth, small, status, props]
@@ -44,8 +43,15 @@ import {
       </>
     );
   }
+
+  interface SelectV2Props {
+    fullWidth?: boolean; 
+    small?: boolean;
+    label?: ReactNode;
+    status?: InputStatus
+  }
   
-  const SelectElement = styled.select<{ isOpen: boolean } & SharedPropsV2>`
+  const SelectElement = styled.select<SelectV2Props>`
     outline: none;
     border: none;
     background-color: transparent;
