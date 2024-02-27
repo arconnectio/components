@@ -19,29 +19,29 @@ export interface TooltipPosition {
 export function getPosition(position: Position): TooltipPosition {
   const positions: Record<Position, TooltipPosition> = {
     top: {
-      bottom: "125%",
+      bottom: "133%",
       left: "50%",
       transform: "translate(-50%, 0)"
     },
     topStart: {
-      bottom: "125%",
+      bottom: "133%",
       left: "0"
     },
     topEnd: {
-      bottom: "125%",
+      bottom: "133%",
       right: "0"
     },
     bottom: {
-      top: "125%",
+      top: "133%",
       left: "50%",
       transform: "translate(-50%, 0)"
     },
     bottomStart: {
-      top: "125%",
+      top: "133%",
       left: "0"
     },
     bottomEnd: {
-      top: "125%",
+      top: "133%",
       right: "0"
     },
     left: {
