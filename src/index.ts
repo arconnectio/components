@@ -10,6 +10,7 @@ export * from "./Popover";
 export * from "./Provider";
 export * from "./Section";
 export * from "./Select";
+export * from "./SelectV2";
 export * from "./Text";
 export * from "./Tooltip";
 export * from "./TooltipV2";
