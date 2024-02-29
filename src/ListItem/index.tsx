@@ -65,9 +65,9 @@ const IconWrapper = styled(Squircle)<{ small: boolean }>`
 
 const ItemName = styled(Text).attrs({
   noMargin: true,
-  heading: true
+  heading: false
 })<{ small: boolean }>`
-  font-weight: ${(props) => props.small ? "500" : "600"};
+  font-weight: 500;
   font-size: ${(props) => props.small ? "16px" : "20px"};
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -77,7 +77,8 @@ const ItemName = styled(Text).attrs({
 `;
 
 const ItemDescription = styled(Text).attrs({
-  noMargin: true
+  noMargin: true,
+  heading: false
 })<{ small: boolean }>`
   font-size: ${(props) => props.small ? "10px" : "14px"};
   font-weight: 500;
