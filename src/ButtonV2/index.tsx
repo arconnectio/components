@@ -23,7 +23,7 @@ export const ButtonV2 = styled.button.attrs<ButtonV2Props>((props) => ({
   outline: none;
   cursor: pointer;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   padding: 10px 24px;
   width: ${(props) => (props.fullWidth ? "100%" : "250px")};
   min-width: 100px;
