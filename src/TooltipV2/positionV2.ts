@@ -25,11 +25,11 @@ export function getPosition(position: Position): TooltipPosition {
     },
     topStart: {
       bottom: "133%",
-      left: "0"
+      left: "-37%"
     },
     topEnd: {
       bottom: "133%",
-      right: "0"
+      right: "-37%"
     },
     bottom: {
       top: "133%",
@@ -38,11 +38,11 @@ export function getPosition(position: Position): TooltipPosition {
     },
     bottomStart: {
       top: "133%",
-      left: "0"
+      left: "-37%"
     },
     bottomEnd: {
       top: "133%",
-      right: "0"
+      right: "-37%"
     },
     left: {
       top: "50%",
