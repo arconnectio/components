@@ -17,26 +17,19 @@ export function InputV2({
   ...props
 }: SharedPropsV2 & InputV2Props & HTMLProps<HTMLInputElement>) {
   const inputV2Props = useMemo<any>(
-    () => ({ fullWidth, small, dropdown, popup, search, status, disabled, ...props }),
-    [fullWidth, small, dropdown, popup, search, status, disabled, props]
+    () => ({ fullWidth, small, dropdown, popup, search, status, disabled, icon, ...props }),
+    [fullWidth, small, dropdown, popup, search, status, disabled, icon, props]
   );
 
-  const inputIcon = ({ 
-    dropdown, 
-    popup, 
-    search 
-  }: {
-    dropdown?: boolean;
-    popup?: boolean;
-    search?: boolean;
-  }) => {
+  const inputIcon = () => {
+    if (icon) return icon;
     if (dropdown) return <ChevronDownIcon />;
     if (popup) return <ChevronRightIcon />;
     if (search) return <SearchIcon />;
     return null;
   }
 
-  const IconComponent = inputIcon({ dropdown, popup, search });
+  const IconComponent = inputIcon();
 
   return (
     <>

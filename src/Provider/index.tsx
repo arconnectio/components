@@ -54,7 +54,9 @@ export function Provider({
     inputField: "#757575",
     success: "#17A815",
     fail: "#EB0000",
-    backgroundSecondary: "#333333"
+    backgroundSecondary: "#333333",
+    delete: "#F58080",
+    secondaryDelete: "#F58080"
   };
   const darkTheme: DefaultTheme = {
     displayTheme: "dark",
@@ -77,7 +79,9 @@ export function Provider({
     inputField: "#847F90",
     success: "#14D110",
     fail: "#FF1A1A",
-    backgroundSecondary: "#333333"
+    backgroundSecondary: "#333333",
+    delete: "#8C1A1A",
+    secondaryDelete: "#C51A1A"
   };
 
   return (
