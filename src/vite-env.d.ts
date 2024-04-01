@@ -25,5 +25,6 @@ declare module "styled-components" {
     success: string;
     fail: string;
     backgroundSecondary: string;
+    delete: string;
   }
 }
