@@ -8,21 +8,20 @@ export function ModalV2({
   open,
   setOpen,
   actions,
-  announcement,
   root
 }: PropsWithChildren<ModalV2Props>) {
   return ReactDOM.createPortal(
     <AnimatePresence>
       {open && (
         <ModalWrapper onClick={() => setOpen(false)}>
-          <ModalCard announcement={announcement} onClick={(e) => e.stopPropagation()}>
+          <ModalCard onClick={(e) => e.stopPropagation()}>
             <ModalContent>{children}</ModalContent>
             {actions && <ModalActions>{actions}</ModalActions>}
           </ModalCard>
         </ModalWrapper>
       )}
     </AnimatePresence>,
-    root || document.getElementById("root") as any
+    root || (document.getElementById("root") as any)
   );
 }
 
@@ -62,12 +61,14 @@ const ModalWrapper = styled(motion.div).attrs({
   padding: 2rem 0;
 `;
 
-const ModalCard = styled.div<{ announcement?: boolean }>`
-  background-color: ${(props) => props.theme.displayTheme === "light" ? props.theme.backgroundv2 : props.theme.backgroundSecondary};
-  outline: 1px solid #7866D3;
+const ModalCard = styled.div`
+  background-color: ${(props) =>
+    props.theme.displayTheme === "light"
+      ? props.theme.backgroundv2
+      : props.theme.backgroundSecondary};
+  outline: 1px solid #7866d3;
   border-radius: 10px;
   width: 300px;
-  height: ${(props) => props.announcement ? "364px" : "200px"};
   margin: auto;
   padding: 24px 30px;
   box-sizing: border-box;
@@ -95,6 +96,5 @@ interface ModalV2Props {
   open: boolean;
   setOpen: (open: boolean) => any;
   actions?: ReactNode;
-  announcement?: boolean;
   root?: Element | DocumentFragment;
 }
