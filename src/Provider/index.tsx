@@ -54,7 +54,7 @@ export function Provider({
     inputField: "#757575",
     success: "#17A815",
     fail: "#EB0000",
-    backgroundSecondary: "#333333",
+    backgroundSecondary: "#CCCCCC",
     delete: "#F58080",
     secondaryDelete: "#F58080"
   };
