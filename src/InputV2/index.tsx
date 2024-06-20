@@ -1,4 +1,8 @@
-import { ChevronDownIcon, ChevronRightIcon, SearchIcon } from "@iconicicons/react";
+import {
+  ChevronDownIcon,
+  ChevronRightIcon,
+  SearchIcon
+} from "@iconicicons/react";
 import { HTMLProps, ReactNode, useMemo } from "react";
 import styled from "styled-components";
 import { InputStatus } from "../hooks";
@@ -17,7 +21,17 @@ export function InputV2({
   ...props
 }: SharedPropsV2 & InputV2Props & HTMLProps<HTMLInputElement>) {
   const inputV2Props = useMemo<any>(
-    () => ({ fullWidth, small, dropdown, popup, search, status, disabled, icon, ...props }),
+    () => ({
+      fullWidth,
+      small,
+      dropdown,
+      popup,
+      search,
+      status,
+      disabled,
+      icon,
+      ...props
+    }),
     [fullWidth, small, dropdown, popup, search, status, disabled, icon, props]
   );
 
@@ -27,7 +41,7 @@ export function InputV2({
     if (popup) return <ChevronRightIcon />;
     if (search) return <SearchIcon />;
     return null;
-  }
+  };
 
   const IconComponent = inputIcon();
 
@@ -77,9 +91,7 @@ export const InputV2Wrapper = styled.div<SharedPropsV2>`
   width: ${(props) => (props.fullWidth ? "calc(100% - 2px)" : "max-content")};
   border: 1.5px solid
     ${(props) =>
-      props.status === "error"
-        ? props.theme.fail
-        : props.theme.inputField};
+      props.status === "error" ? props.theme.fail : props.theme.inputField};
   border-radius: 10px;
 
   overflow: hidden;
@@ -88,14 +100,16 @@ export const InputV2Wrapper = styled.div<SharedPropsV2>`
 
   &:focus-within,
   &: hover {
-    ${(props) => "border: 1.5px solid " + (props.status === "error" ? props.theme.fail : props.theme.primaryTextv2)};
-  };
-  
+    ${(props) =>
+      "border: 1.5px solid " +
+      (props.status === "error"
+        ? props.theme.fail
+        : props.theme.primaryTextv2)};
+  }
+
   &:active {
     border-color: ${(props) =>
-      props.status === "error"
-        ? props.theme.fail
-        : props.theme.inputField};
+      props.status === "error" ? props.theme.fail : props.theme.inputField};
     color: rgb(${(props) => props.theme.theme});
   }
 `;
@@ -123,15 +137,13 @@ export const InputV2Element = styled.input<SharedPropsV2>`
 
   font-size: 16px;
   font-weight: 500;
-  padding: ${(props) => 
-    props.small ? "8.5px 15px" : "13.5px 15px"};
+  padding: ${(props) => (props.small ? "8.5px 15px" : "13.5px 15px")};
   line-height: 22px;
   width: 100%;
   transition: all 0.23s ease-in-out;
 
   ::-webkit-input-placeholder {
-    color: rgb(
-      ${(props) => props.theme.inputField});
+    color: rgb(${(props) => props.theme.inputField});
   }
 
   :-ms-input-placeholder {
@@ -145,8 +157,6 @@ export const InputV2Element = styled.input<SharedPropsV2>`
 
 export const IconWrapperV2 = styled.div<SharedPropsV2>`
   position: absolute;
-  width: 22px;
-  height: 22px;
   z-index: 10;
   font-size: 16px;
   top: 50%;
