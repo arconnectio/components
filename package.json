@@ -59,5 +59,9 @@
     "react": "^16.8.0 || 17.x || 18.x",
     "react-dom": "^16.8.0 || 17.x || 18.x",
     "styled-components": "^5.0.0"
+  },
+  "engineStrict": true,
+  "engines": {
+    "node": ">=16 <17"
   }
 }

@@ -13,7 +13,6 @@ export function Toast({
   children,
   duration,
   action,
-  displayTheme,
   type = "info",
   close,
   addedAt
@@ -37,7 +36,7 @@ export function Toast({
   }, [progress]);
 
   return (
-    <ToastWrapper displayTheme={displayTheme}>
+    <ToastWrapper>
       <ChildrenWithIcon>
         <Icon
           as={
@@ -77,7 +76,6 @@ export interface ToastProps {
   duration: number;
   action?: ToastAction;
   addedAt: number;
-  displayTheme: DisplayTheme;
   type?: ToastType;
   close: (...args: any[]) => any;
 }
@@ -118,7 +116,7 @@ const ToastWrapper = styled(motion.div).attrs({
       duration: 0.23
     }
   }
-})<{ displayTheme: DisplayTheme }>`
+})`
   position: relative;
   display: flex;
   align-items: center;
@@ -128,7 +126,7 @@ const ToastWrapper = styled(motion.div).attrs({
   font-weight: 500;
   background-color: rgb(
     ${(props) =>
-      props.displayTheme === "light" ? "0, 0, 0" : props.theme.cardBackground}
+      props.theme.displayTheme === "light" ? "0, 0, 0" : props.theme.cardBackground}
   );
   border-radius: 8px;
   //padding: .5rem 1.1rem calc(.5rem + ${progressHeight});
@@ -136,7 +134,7 @@ const ToastWrapper = styled(motion.div).attrs({
   width: calc(100% - 2.2rem);
   overflow: hidden;
   border: ${(props) =>
-    props.displayTheme === "light"
+    props.theme.displayTheme === "light"
       ? "none"
       : "2px solid rgb(" + props.theme.cardBorder + ")"};
   transition: all 0.23s ease-in-out;

@@ -1,4 +1,4 @@
-import { Provider } from "../src/Provider";
+import { Provider, ARCONNECT_DARK_THEME, ARCONNECT_LIGHT_THEME } from "../src/Provider";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -12,7 +12,7 @@ export const parameters = {
 
 export const decorators = [
   (Story, context) => (
-    <Provider theme={context.globals.theme}>
+    <Provider theme={context.globals.theme === "dark" ? ARCONNECT_DARK_THEME : ARCONNECT_LIGHT_THEME}>
       <Story />
     </Provider>
   )

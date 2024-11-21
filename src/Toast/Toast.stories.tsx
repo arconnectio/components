@@ -16,7 +16,6 @@ const Template: ComponentStory<typeof Toast> = (args) => (
 const defaultArgs: ComponentProps<typeof Toast> = {
   close: () => {},
   duration: 4000,
-  displayTheme: "light",
   addedAt: new Date().getTime()
 };
 
