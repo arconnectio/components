@@ -7,10 +7,10 @@
   },
   "type": "module",
   "scripts": {
-    "build": "tsc && vite build",
-    "storybook": "start-storybook -p 6006 -s assets",
-    "build-storybook": "build-storybook -s assets",
-    "serve-storybook": "serve storybook-static",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider tsc && vite build",
+    "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006 -s assets",
+    "build-storybook": "NODE_OPTIONS=--openssl-legacy-provider build-storybook -s assets",
+    "serve-storybook": "NODE_OPTIONS=--openssl-legacy-provider serve storybook-static",
     "fmt": "prettier . --write"
   },
   "files": [
@@ -59,9 +59,5 @@
     "react": "^16.8.0 || 17.x || 18.x",
     "react-dom": "^16.8.0 || 17.x || 18.x",
     "styled-components": "^5.0.0"
-  },
-  "engineStrict": true,
-  "engines": {
-    "node": ">=16 <17"
   }
 }
