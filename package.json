@@ -1,16 +1,16 @@
 {
   "name": "@arconnect/components",
-  "version": "0.3.11",
+  "version": "1.0.0",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
   "type": "module",
   "scripts": {
-    "build": "tsc && vite build",
-    "storybook": "start-storybook -p 6006 -s assets",
-    "build-storybook": "build-storybook -s assets",
-    "serve-storybook": "serve storybook-static",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider tsc && vite build",
+    "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006 -s assets",
+    "build-storybook": "NODE_OPTIONS=--openssl-legacy-provider build-storybook -s assets",
+    "serve-storybook": "NODE_OPTIONS=--openssl-legacy-provider serve storybook-static",
     "fmt": "prettier . --write"
   },
   "files": [
